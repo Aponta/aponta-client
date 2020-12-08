@@ -1,0 +1,91 @@
+#container-tempo-real{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+}
+
+#container-tempo-real-livre{
+    display: grid;
+    grid-template-areas: "tempo-real-info-tarefa";
+    height: 100%;
+    width: 100%;
+}
+
+#container-tempo-real-grid{
+    display: grid;
+    grid-template-areas: "tempo-real-info-tarefa tempo-real-timer";
+    grid-template-columns: 60% 40%;
+    height: 100%;
+    width: 100%;
+}
+
+#tempo-real-info-tarefa{
+    grid-area: tempo-real-info-tarefa;
+    display: grid;
+    grid-template-areas: 
+    "container-tempo-real-info-tarefa-titulo"
+    "container-tempo-real-info-tarefa-descricao";
+    height: 100%;
+    padding: 10px;
+}
+
+#tempo-real-timer{
+    grid-area: tempo-real-timer;
+    display: grid;
+    grid-template-areas: 
+    "tempo-real-timer-cronometro" 
+    "tempo-real-timer-acoes";
+    height: 100%;
+    padding: 10px;
+}
+
+#container-tempo-real-info-tarefa-titulo{
+    grid-area: container-tempo-real-info-tarefa-titulo;
+    height: 100%;
+    padding: 10px;
+}
+
+#container-tempo-real-info-tarefa-descricao{
+    grid-area: container-tempo-real-info-tarefa-descricao;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    padding: 10px;
+}
+
+#titulo-tarefa-info-tempo-real{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#cliente-tarefa-info-tempo-real{
+    font-size: 20px;
+}
+
+.texto-info-tempo-real{
+    color:#105AAD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+#tempo-real-timer-cronometro{
+    grid-area: tempo-real-timer-cronometro;
+    height: 100%;
+    padding: 10px;
+    color:#105AAD;
+}
+
+#tempo-real-timer-acoes{
+    grid-area: tempo-real-timer-acoes;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    padding: 10px;
+}

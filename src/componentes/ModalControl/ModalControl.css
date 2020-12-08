@@ -1,0 +1,23 @@
+.close-modal {
+  font-size: 1.5rem;
+  color: white;
+  float: right;
+}
+
+.padrao-modal{
+    border-color: #105AAD;
+    background-color: #105AAD;
+}
+
+.modal-header{
+  border-radius: 0 !important ;
+}
+
+.modal-content{
+  border: 1px solid #105AAD;
+  border-radius: 0 !important ;
+}
+
+.modal-footer{
+  border-radius: 0 !important;
+}

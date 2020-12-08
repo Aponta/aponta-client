@@ -1,0 +1,35 @@
+.container-paginacao{
+    height: 100%;
+}
+
+.item-pagina{
+    height: 100%;
+    width: 50px;
+    border-top: 1px solid #105AAD;
+    border-bottom: 1px solid #105AAD;
+    border-right: 1px solid #105AAD;
+    cursor: pointer;
+}
+
+.link-item-pagina{
+    color: #105AAD;
+    font-weight: bold;
+    display: block;
+}
+
+.pagina-atual{
+    background-color: #105AAD;
+}
+
+.pagina-atual > a{
+    color: white;
+}
+
+.link-item-pagina:hover{
+    color: #105AAD;
+    text-decoration: none;
+}
+
+.item-pagina:first-child{
+    border-left: 1px solid #105AAD;
+}

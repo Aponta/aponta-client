@@ -1,0 +1,45 @@
+#container-lista-apontamento{
+    display: grid;
+    grid-template-areas: 
+    "itens-apontamento"
+    "paginacao-apontamento";
+    grid-template-rows: 90% auto;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+}
+
+#itens-apontamento{
+    max-height: 100%;
+    grid-area: itens-apontamento;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #105AAD;
+    border: 1px white solid;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-button{
+      background-color: white;
+  }
+  
+#paginacao-apontamento{
+    display: flex;
+    grid-area: paginacao-apontamento;
+    padding: 2px 0px;
+    justify-content: center;
+}

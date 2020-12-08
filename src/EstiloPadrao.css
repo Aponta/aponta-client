@@ -1,0 +1,76 @@
+.form-control{
+    height: calc(1.5em + .75rem + 10px);
+    border: 1px solid #9CA1A6;
+    background-color: #9CA1A6;
+    background-clip: initial;
+    border-radius: 0;
+}
+
+.form-control:focus, .form-control{
+    background-color:#9CA1A6;
+    color: white;
+}
+
+.btn-aponta{
+    color: white;
+    border-radius: 0 !important;
+    height: calc(1.5em + .75rem + 10px) !important;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-aponta:hover{
+    color: white;
+    box-shadow: 0 0 0.3rem black;;
+}
+
+.btn-vermelho{
+    background-color: #EB1E11;
+    border-color: #EB1E11;
+}
+
+.btn-azul{
+    background-color: #105AAD;
+    border-color: #105AAD;
+}
+
+.btn-verde{
+    background-color: #076B03;
+    border-color: #076B03;
+}
+
+.btn-amarelo{
+    background-color: #EAEB01;
+    border-color: #EAEB01;
+}
+
+.btn-laranja{
+    background-color: #C46D08;
+    border-color: #C46D08;
+}
+
+.w-100-px{
+    width: 100px;
+}
+
+.w-75-px{
+    width: 75px;
+}
+
+.w-50-px{
+    width: 50px;
+}
+
+.w-25-px{
+    width: 25px;
+}
+
+.h-auto{
+    height: auto !important;
+}
