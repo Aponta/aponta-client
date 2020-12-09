@@ -1,4 +1,4 @@
-export const linkBackEnd = "https://localhost:5001/aponta";
+export const linkBackEnd = process.env.REACT_APP_API_URL;
 
 export const chamarBackEnd = async (
     metodo : string, 
