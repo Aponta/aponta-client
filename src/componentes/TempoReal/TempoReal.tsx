@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react'
 import "./TempoReal.css"
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import dayjs from 'dayjs'
 import dayOfYear from 'dayjs/plugin/dayOfYear';
 import * as loginUtils from "../../utils/Login"
@@ -26,6 +26,7 @@ function TempoReal(props : any) : JSX.Element {
         ID: 0,
         DATA_HORA_INICIAL : null,
         DATA_HORA_FINAL : null,
+        DESCRICAO: "",
         USUARIO: {},
         TAREFA: {
             ID_TAREFA_CHAMADO: 0,
@@ -45,6 +46,7 @@ function TempoReal(props : any) : JSX.Element {
                 ID: props.apontamentoAtual.ID,
                 DATA_HORA_INICIAL: props.apontamentoAtual.DATA_HORA_INICIAL,
                 DATA_HORA_FINAL: props.apontamentoAtual.DATA_HORA_FINAL,
+                DESCRICAO:  props.apontamentoAtual.DESCRICAO,
                 USUARIO: props.apontamentoAtual.USUARIO,
                 TAREFA: props.apontamentoAtual.TAREFA
             })
@@ -59,7 +61,7 @@ function TempoReal(props : any) : JSX.Element {
                     className="texto-info-tempo-real">
                         {props.apontamentoAtual.TAREFA.ID_TAREFA_CHAMADO}
                         {": "}
-                        {props.apontamentoAtual.TAREFA.DESCRICAO}
+                        {props.apontamentoAtual.DESCRICAO}
                     </div>
                 </div>
                 <div id="container-tempo-real-info-tarefa-descricao">
@@ -122,6 +124,12 @@ function TempoReal(props : any) : JSX.Element {
     }
 
     const criarApontamento = (dadosApontamento : any) => {
+
+        if(!dadosApontamento.DESCRICAO.match(/[a-zA-Z]/)){
+            showToast("erro", "Preencha a descricao");
+            return
+        }
+
         apontamentoUtils.criarApontamento(dadosApontamento).then((response)=>{
             if(response.status == 200){
                 response.json().then((data)=>{
@@ -176,10 +184,11 @@ function TempoReal(props : any) : JSX.Element {
             horas = (dataHoraAtual.dayOfYear() - diaInicial) * 24
         }
 
-        horas += dataHoraAtual.hour() - horaInicial
         if(minutosInicial>dataHoraAtual.minute()){
-            minutos = (dataHoraAtual.minute() - minutosInicial) * -1
+            horas += (dataHoraAtual.hour() - horaInicial) - 1
+            minutos = ((minutosInicial - 60) * -1) + dataHoraAtual.minute()
         }else{
+            horas += (dataHoraAtual.hour() - horaInicial)
             minutos = dataHoraAtual.minute() - minutosInicial
         }
 
@@ -199,7 +208,7 @@ function TempoReal(props : any) : JSX.Element {
                         <>
                             <div id="tempo-real-timer">
                             <div id="tempo-real-timer-cronometro">
-                                {formatadoDiplay}
+                            <i className="fa fa-circle icone-cronometro"/>{formatadoDiplay}
                             </div>
                             <div id="tempo-real-timer-acoes">
                                 <button 

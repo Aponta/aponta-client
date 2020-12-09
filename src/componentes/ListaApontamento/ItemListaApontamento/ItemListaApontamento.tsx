@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react'
 import "./ItemListaApontamento.css"
 import dayjs from 'dayjs';
@@ -14,12 +15,12 @@ function ItemListaApontamento(props : any) : JSX.Element {
         ID: 0,
         DATA_HORA_INICIAL: "",
         DATA_HORA_FINAL: "",
+        DESCRICAO: "",
         LOGIN:{},
         TAREFA:{
             ID_TAREFA: 0,
             ID_TAREFA_CHAMADO: 0,
             CLIENTE_TAREFA: "",
-            DESCRICAO: ""
         }
     })
 
@@ -34,6 +35,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
             ID: props.ID,
             DATA_HORA_INICIAL: dataInicial,
             DATA_HORA_FINAL: dataFinal,
+            DESCRICAO: props.DESCRICAO,
             LOGIN: props.USUARIO,
             TAREFA: props.TAREFA
         })
@@ -45,7 +47,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
             ID_TAREFA: dados.ID,
             ID_TAREFA_CHAMADO: dados.TAREFA.ID_TAREFA_CHAMADO,
             CLIENTE_TAREFA: dados.TAREFA.CLIENTE_TAREFA,
-            DESCRICAO: dados.TAREFA.DESCRICAO
+            DESCRICAO: dados.DESCRICAO
         }
 
         apontamentoUtils.criarApontamento(dadosApontamento).then((response)=>{
@@ -95,7 +97,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
             <div id="item-lista-apontamento-descricao">
                 <div className="row">
                     <div className="col-7">
-                        {dados.TAREFA.DESCRICAO}
+                        {dados.DESCRICAO}
                     </div>
                     <div className="col">
                         <div className="row">
@@ -126,7 +128,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
     )
 }
 
-const mapStateToProps = (state : any) => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch : any) => ({
     

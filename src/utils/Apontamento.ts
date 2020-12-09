@@ -7,6 +7,7 @@ export const criarApontamento = async (dadosApontamento : any) : Promise<Respons
         ID: 0,
         DATA_HORA_INICIAL: new Date(),
         DATA_HORA_FINAL: new Date(),
+        DESCRICAO: dadosApontamento.DESCRICAO,
         USUARIO: {
             ID_USUARIO: parseInt(atob(usuarioLogado || "")),
             USUARIO: "",
@@ -16,7 +17,6 @@ export const criarApontamento = async (dadosApontamento : any) : Promise<Respons
             ID_TAREFA: 0,
             ID_TAREFA_CHAMADO: parseInt(dadosApontamento.ID_TAREFA_CHAMADO),
             CLIENTE_TAREFA: dadosApontamento.CLIENTE_TAREFA,
-            DESCRICAO: dadosApontamento.DESCRICAO
         }
     }
 
