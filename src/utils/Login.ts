@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import * as backEndUtils from "./BackEnd";
 
 export const usuarioLogado = async (exigeAutenticacao : boolean) : Promise<boolean> =>{

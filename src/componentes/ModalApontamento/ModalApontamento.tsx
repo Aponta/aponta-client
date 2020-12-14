@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState } from 'react'
 import "./ModalApontamento.css";
 import ModalControl from "../ModalControl/ModalControl";

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import dayjs from "dayjs";
 
 export let formatadoDiplay = "00:00";

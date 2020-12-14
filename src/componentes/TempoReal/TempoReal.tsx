@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react'
 import "./TempoReal.css"
@@ -180,7 +182,7 @@ function TempoReal(props : any) : JSX.Element {
 
         dataHoraAtual.diff(dayjs(dataHoraInicial), 'm', true)
 
-        if(diaInicial !=  dataHoraAtual.dayOfYear()){
+        if(diaInicial !==  dataHoraAtual.dayOfYear()){
             horas = (dataHoraAtual.dayOfYear() - diaInicial) * 24
         }
 

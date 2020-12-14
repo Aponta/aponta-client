@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState } from 'react'
 import "../Login.css";
 import { showToast } from "../../ToastControl/ToastControl";

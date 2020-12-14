@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react'
 import "./ListaApontamento.css";
 import ItemListaApontamento from "./ItemListaApontamento/ItemListaApontamento";

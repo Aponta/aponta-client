@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React,{ useState, useEffect } from 'react'
 import "../Login.css";
 import { connect } from "react-redux";
