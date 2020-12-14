@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react'
 import "./ListaApontamento.css";
@@ -19,7 +20,7 @@ function ListaApontamento() : JSX.Element{
     
     useEffect(() => {
         window.setTimeout(() => buscarApontamentoPaginado(dados.quantidadePagina, 0), 1000)
-    }, [])
+    }, )
 
     useEffect(() => {
         buscarApontamentoPaginado(dados.quantidadePagina, dados.paginaAtual);

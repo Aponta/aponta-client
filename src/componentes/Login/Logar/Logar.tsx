@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable eqeqeq */
 import React,{ useState, useEffect } from 'react'
 import "../Login.css";
@@ -19,7 +20,7 @@ function Logar() : JSX.Element {
     if(localStorage.getItem("tokenAutenticacao")){
       historico.push("/home");
     }
-  }, [])
+  })
 
   const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     setDados({

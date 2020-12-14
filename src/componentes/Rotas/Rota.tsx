@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Rota.css";
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../stores/store";
 

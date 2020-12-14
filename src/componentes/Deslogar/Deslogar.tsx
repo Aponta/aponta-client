@@ -15,7 +15,7 @@ export default function Deslogar() : JSX.Element {
                 deslogar();
             }
         });
-    }, [])
+    }, )
 
     const deslogar = () =>{
         localStorage.removeItem("tokenAutenticacao");

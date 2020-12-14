@@ -8,7 +8,7 @@ function Paginacao(props : any) : JSX.Element {
 
     useEffect(() => {
         setTotalDePaginas(totalPaginas(props.quantidadePagina, props.totalRegistros));
-    }, [])
+    }, [props.quantidadePagina, props.totalRegistros])
 
     const totalPaginas = (quantidadePagina : number, totalRegistros : number) : number =>{
         return totalRegistros / quantidadePagina;

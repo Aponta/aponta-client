@@ -40,7 +40,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
             LOGIN: props.USUARIO,
             TAREFA: props.TAREFA
         })
-    }, [])
+    }, [props.DATA_HORA_FINAL, props.DATA_HORA_INICIAL, props.DESCRICAO, props.ID, props.TAREFA, props.USUARIO])
 
     const criarApontamento = () => {
         
