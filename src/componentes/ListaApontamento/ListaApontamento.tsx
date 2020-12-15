@@ -20,7 +20,7 @@ function ListaApontamento() : JSX.Element{
     
     useEffect(() => {
         window.setTimeout(() => buscarApontamentoPaginado(dados.quantidadePagina, 0), 1000)
-    }, )
+    }, [])
 
     useEffect(() => {
         buscarApontamentoPaginado(dados.quantidadePagina, dados.paginaAtual);
