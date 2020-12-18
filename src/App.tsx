@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import "./EstiloPadrao.css"
+import SideBar from "./componentes/SideBar";
+import MenuOption from "./componentes/MenuOption";
 import Logar from "./componentes/Login/Logar/Logar";
 import CadastrarLogin from "./componentes/Login/CadastrarLogin/CadastrarLogin";
 import ToastControl from "./componentes/ToastControl/ToastControl";
@@ -12,8 +14,25 @@ import Rota from "./componentes/Rotas/Rota"
 function App () : JSX.Element {
 
   return (
-    <div className="App">
+    <div id="container-app">
       <div id="espaco-esq">
+        <div id="sideBar">
+          <Rota 
+          caminho="/home" 
+          exigeAutenticacao={true}
+          componente={()=> 
+            <> 
+              <SideBar >
+                <Rota 
+                caminho="/home" 
+                exigeAutenticacao={true}
+                componente={()=> <MenuOption><Deslogar /></MenuOption> }
+              /> 
+              </SideBar>
+            </> 
+            } 
+          />
+        </div>
       </div>
       <div id="espaco-cen">
           <div id="espaco-cen-cabecalho">
@@ -44,11 +63,6 @@ function App () : JSX.Element {
           <div id="espaco-cen-rodape"></div>
       </div>
       <div id="espaco-dir">
-        <Rota 
-        caminho="/home" 
-        exigeAutenticacao={true}
-        componente={()=> <Deslogar /> } 
-        /> 
         <ToastControl />
       </div>
     </div>

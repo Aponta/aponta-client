@@ -1,17 +1,12 @@
-.App {
+#container-app {
     text-align: center;
     display: grid;
-    grid-template-areas: "espaco-esq espaco-cen espaco-dir";
-    grid-template-columns: 20% 60% 20%;
-    min-height: 100vh;
-    max-height: 100vh;
+    grid-template-areas: 
+    "espaco-esq"
+    "espaco-cen";
+    grid-template-rows: auto auto;
     background-color: #2F8EFA;
     overflow: hidden !important;
-}
-
-#espaco-esq{
-    grid-area: espaco-esq;
-    padding: 10px;
 }
 
 #espaco-dir{
@@ -29,29 +24,71 @@
     grid-template-rows: 10rem auto 9rem;
 }
 
-#espaco-cen-cabecalho{
-    grid-area: espaco-cen-cabecalho;
-    padding: 10px;
-}
+#sideBar {
+    grid-area: sideBar;
+    padding: 0px;
+    width: 20%;
+    flex-grow: 1;
+    flex-direction: row;
+  }
 
-#espaco-cen-corpo{
-    grid-area: espaco-cen-corpo;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-#espaco-cen-rodape{
-    grid-area: espaco-cen-rodape;
-    padding: 10px;
-}
-
-@media (max-height: 800px){
+@media (min-width: 1200px){
+   #container-app {
+        text-align: center;
+        display: grid;
+        grid-template-areas: "espaco-esq espaco-cen espaco-dir";
+        grid-template-columns: 20% 60% 20%;
+        min-height: 100vh;
+        max-height: 100vh;
+        background-color: #2F8EFA;
+        overflow: hidden !important;
+    }
+    
+    #espaco-esq{
+        grid-area: espaco-esq;
+        padding: 10px;
+        display: flex;
+    }
+    
+    #espaco-dir{
+        grid-area: espaco-dir;
+        padding: 10px;
+    }
+    
+    #espaco-cen{
+        grid-area: espaco-cen;
+        display: grid;
+        grid-template-areas: 
+        "espaco-cen-cabecalho"
+        "espaco-cen-corpo"
+        "espaco-cen-rodape";
+        grid-template-rows: 10rem auto 9rem;
+    }
+    
+    #espaco-cen-cabecalho{
+        grid-area: espaco-cen-cabecalho;
+        padding: 10px;
+    }
+    
     #espaco-cen-corpo{
-        max-height: 400px;
+        grid-area: espaco-cen-corpo;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    #espaco-cen-rodape{
+        grid-area: espaco-cen-rodape;
+        padding: 10px;
     }
 
-    #espaco-cen{
-        grid-template-rows: 10rem auto 5rem;
+    @media (max-height: 800px){
+        #espaco-cen-corpo{
+            max-height: 400px;
+        }
+    
+        #espaco-cen{
+            grid-template-rows: 10rem auto 5rem;
+        }
     }
 }
