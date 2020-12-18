@@ -1,0 +1,2 @@
+import ModalConfirmarApontamento from "./ModalConfirmarApontamento"
+export default ModalConfirmarApontamento;

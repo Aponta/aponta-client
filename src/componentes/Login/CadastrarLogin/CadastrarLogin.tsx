@@ -51,7 +51,7 @@ export default function CadastrarLogin() : JSX.Element {
             showToast("erro", data.message);
           }else{
             historico.push("/login");
-            showToast("sucesso" ,"cadastro efetuado com sucesso");
+            showToast("sucesso" ,"Cadastro efetuado com sucesso");
           }
         })
       }

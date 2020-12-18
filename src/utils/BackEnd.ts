@@ -31,6 +31,8 @@ export const chamarBackEnd = async (
                 },
             }).then((resposta) =>  {
             return resposta
-        })
-    }
+            }).catch((error)=>{
+                return error
+            })
+        }
   };

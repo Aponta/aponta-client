@@ -1,17 +1,18 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect } from 'react'
-import "./ItemListaApontamento.css"
+import React, { useState, useEffect } from 'react';
+import "./ItemListaApontamento.css";
 import dayjs from 'dayjs';
 import { connect } from "react-redux";
-import * as apontamentoUtils from "../../../utils/Apontamento"
+import * as apontamentoUtils from "../../../utils/Apontamento";
 import * as apontamentoActions from "../../../stores/actions/ApontamentoAction"; 
-import ModalConfirm from "../../ModalConfirm/ModalConfirm"
-import { showToast } from "../../ToastControl/ToastControl"
+import ModalConfirm from "../../ModalConfirm/ModalConfirm";
+import ModalConfirmarApontamento from "../../ModalConfirmarApontamento/ModalConfirmarApontamento";
+import { showToast } from "../../ToastControl/ToastControl";
 
 function ItemListaApontamento(props : any) : JSX.Element {
 
-    const [showModalConfirm, setShowModalConfirm] = useState(false)
+    const [showModalConfirmarApontamento, setShowModalConfirmarApontamento] = useState(false)
     const [dados, setDados] = useState({
         ID: 0,
         DATA_HORA_INICIAL: "",
@@ -42,13 +43,13 @@ function ItemListaApontamento(props : any) : JSX.Element {
         })
     }, [props.DATA_HORA_FINAL, props.DATA_HORA_INICIAL, props.DESCRICAO, props.ID, props.TAREFA, props.USUARIO])
 
-    const criarApontamento = () => {
+    const criarApontamento = (descricao: string) => {
         
         const dadosApontamento = {
             ID_TAREFA: dados.ID,
             ID_TAREFA_CHAMADO: dados.TAREFA.ID_TAREFA_CHAMADO,
             CLIENTE_TAREFA: dados.TAREFA.CLIENTE_TAREFA,
-            DESCRICAO: dados.DESCRICAO
+            DESCRICAO: descricao
         }
 
         apontamentoUtils.criarApontamento(dadosApontamento).then((response)=>{
@@ -59,6 +60,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
                             if(response.status == 200){
                                 response.json().then((data)=>{
                                     if(!data.message){
+                                        setShowModalConfirmarApontamento(false);
                                         showToast("sucesso", "Apontando na tarefa " + dados.TAREFA.ID_TAREFA_CHAMADO)
                                         props.setApontamentoAtual(data.apontamento);
                                     }else{
@@ -73,6 +75,14 @@ function ItemListaApontamento(props : any) : JSX.Element {
                 })
             }
         })
+    }
+
+    const montarObj = () =>{
+        return {
+            ID_TAREFA_CHAMADO: dados.TAREFA.ID_TAREFA_CHAMADO,
+            CLIENTE_TAREFA: dados.TAREFA.CLIENTE_TAREFA,
+            DESCRICAO: dados.DESCRICAO
+        }
     }
 
     return (
@@ -112,15 +122,16 @@ function ItemListaApontamento(props : any) : JSX.Element {
                 <button 
                 type="button"
                 className="btn-aponta btn-laranja w-100"
-                onClick={() => setShowModalConfirm(true)}
+                onClick={() => setShowModalConfirmarApontamento(true)}
                 >
                     Apontar
                 </button>
             </div>
-            <ModalConfirm 
-            show={showModalConfirm}
-            onHide={() => setShowModalConfirm(false)}
-            acaoConfirmada={() => criarApontamento()}
+            <ModalConfirmarApontamento 
+            show={showModalConfirmarApontamento}
+            onHide={() => setShowModalConfirmarApontamento(false)}
+            apontamento={montarObj()}
+            criarApontamento={(descricao : string) => criarApontamento(descricao)}
             tituloModalConfirm={
               "Deseja confirmar o apontamento ?"
               }

@@ -127,6 +127,11 @@ function TempoReal(props : any) : JSX.Element {
 
     const criarApontamento = (dadosApontamento : any) => {
 
+        if(dadosApontamento.ID_TAREFA_CHAMADO.match(/[a-zA-Z]/)){
+            showToast("erro", "Id da tarefa deve conter apenas numeros");
+            return
+        }
+
         if(!dadosApontamento.DESCRICAO.match(/[a-zA-Z]/)){
             showToast("erro", "Preencha a descricao");
             return
@@ -148,15 +153,29 @@ function TempoReal(props : any) : JSX.Element {
     }
 
     const encerrarApontamento = (idApontamento: number) : void =>{
-        apontamentoUtils.encerrarApontamento(idApontamento).then((response)=>{
-            if(response.status == 200){
+    apontamentoUtils.encerrarApontamento(idApontamento).then((response)=>{
+        if(response.status == 200){
                 setLivre(true);
                 buscaUltimoApontamento();
                 showToast("sucesso", "Apontatamento " + dados.TAREFA.ID_TAREFA_CHAMADO + " encerrado")
+            }else{
+                apontamentoUtils.buscaUltimoApontamento().then((response)=>{
+                    if(response.status == 200){
+                        response.json().then((data)=>{
+                            if(data.apontamento.DATA_HORA_FINAL){
+                                setLivre(true);
+                                buscaUltimoApontamento();
+                                showToast("sucesso", "Apontatamento " + dados.TAREFA.ID_TAREFA_CHAMADO + " encerrado")
+                            }
+                        })
+                    }else{
+                        document.location.reload(true);
+                    }
+                })
             }
         })
     }
-
+    
     const iniciarTempoReal = () : void =>{
         clearInterval(idTempoReal);
         setFormatadoDiplay((horas < 10 ? "0" + horas : horas) + ":" + (minutos < 10 ? "0" + minutos : minutos))
@@ -249,10 +268,8 @@ const mapStateToProps = (state : any) => ({
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
-    
-        setApontamentoAtual : (apontamentoAtual : any) => 
-        dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual))
-
+    setApontamentoAtual : (apontamentoAtual : any) => 
+    dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual))
 });
 
 export default connect(

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable eqeqeq */
 import React,{ useState, useEffect } from 'react'
@@ -20,7 +21,7 @@ function Logar() : JSX.Element {
     if(localStorage.getItem("tokenAutenticacao")){
       historico.push("/home");
     }
-  })
+  }, [])
 
   const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     setDados({
@@ -44,7 +45,7 @@ function Logar() : JSX.Element {
           }else{
             localStorage.tokenAutenticacao = btoa(data.token);
             localStorage.usuarioLogado = btoa(data.usuario.ID_USUARIO);
-            showToast("sucesso", "login efetuado com sucesso");
+            showToast("sucesso", "Login efetuado com sucesso");
             historico.push("/home")
           }
         })

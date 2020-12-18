@@ -39,7 +39,7 @@ function ModalApontamento(props : any) : JSX.Element {
                 <div className="form-group">
                     <div className="form-row">
                         <div className="col-4">
-                            <label className="label-modal-apontamento">ID Tarefa</label>
+                            <label className="label-modal label-modal-titulo">ID Tarefa</label>
                             <input
                             type="text"
                             id="campo-idTarefa"
@@ -50,7 +50,7 @@ function ModalApontamento(props : any) : JSX.Element {
                             />
                         </div>
                         <div className="col">
-                            <label className="label-modal-apontamento">Cliente</label>
+                            <label className="label-modal label-modal-titulo">Cliente</label>
                             <input
                             type="text"
                             id="campo-clienteTarefa"
@@ -65,7 +65,7 @@ function ModalApontamento(props : any) : JSX.Element {
                 <div className="form-group">
                     <div className="form-row">
                         <div className="col">
-                            <label className="label-modal-apontamento">Descrição</label>
+                            <label className="label-modal label-modal-titulo">Descrição</label>
                             <input
                             type="text"
                             id="campo-descricaoTarefa"

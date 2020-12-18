@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react'
+import { connect } from "react-redux";
 import "./ListaApontamento.css";
 import ItemListaApontamento from "./ItemListaApontamento/ItemListaApontamento";
 import Paginacao from "../Paginacao/Paginacao";
 import Carregando from "../Carregando/Carregando"
 import * as backEndUtils from "../../utils/BackEnd";
 
-function ListaApontamento() : JSX.Element{
+
+function ListaApontamento(props : any) : JSX.Element{
     
     const [carregando, setCarregando] = useState(true);
     const [paginacaoDisplay, setPaginacaoDisplay] = useState(<></>);
@@ -16,8 +18,7 @@ function ListaApontamento() : JSX.Element{
         quantidadePagina: 5,
         paginaAtual: 0,
     })
-
-    
+ 
     useEffect(() => {
         window.setTimeout(() => buscarApontamentoPaginado(dados.quantidadePagina, 0), 1000)
     }, [])
@@ -25,6 +26,10 @@ function ListaApontamento() : JSX.Element{
     useEffect(() => {
         buscarApontamentoPaginado(dados.quantidadePagina, dados.paginaAtual);
     }, [dados.paginaAtual])
+
+    useEffect(() => {
+        buscarApontamentoPaginado(dados.quantidadePagina, dados.paginaAtual);
+    }, [props.apontamentoAtual])
 
     const buscarApontamentoPaginado = (quantidadePagina: number, paginaAtual : number) => {
 
@@ -48,11 +53,15 @@ function ListaApontamento() : JSX.Element{
     }
 
     const montarPaginacao = (totalRegistros : number) => {
-        setPaginacaoDisplay(<Paginacao 
-            quantidadePagina={dados.quantidadePagina} 
-            totalRegistros={totalRegistros} 
-            paginaAtual={(paginaSelecionada : number) => paginaAtual(paginaSelecionada)}
-            />)
+        if(totalRegistros <= dados.quantidadePagina){
+            setPaginacaoDisplay(<></>)
+        }else{
+            setPaginacaoDisplay(<Paginacao 
+                quantidadePagina={dados.quantidadePagina} 
+                totalRegistros={totalRegistros} 
+                paginaAtual={(paginaSelecionada : number) => paginaAtual(paginaSelecionada)}
+                />)
+        }
     }
 
     const montarItensApontamento = (listaApontamento : any) =>{
@@ -86,4 +95,13 @@ function ListaApontamento() : JSX.Element{
     )
 }
 
-export default ListaApontamento;
+const mapStateToProps = (state : any) => ({
+    apontamentoAtual: state.ApontamentoReducer.apontamentoAtual,
+});
+
+const mapDispatchToProps = (dispatch : any) => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListaApontamento);

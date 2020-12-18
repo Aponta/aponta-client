@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import "./Deslogar.css";
 import { useHistory } from 'react-router-dom';
@@ -15,7 +16,7 @@ export default function Deslogar() : JSX.Element {
                 deslogar();
             }
         });
-    }, )
+    }, [])
 
     const deslogar = () =>{
         localStorage.removeItem("tokenAutenticacao");
