@@ -1,5 +1,6 @@
 #container-lista-apontamento{
     display: grid;
+    height: 390px;
     grid-template-areas: 
     "itens-apontamento"
     "paginacao-apontamento";
@@ -42,4 +43,10 @@
     grid-area: paginacao-apontamento;
     padding: 2px 0px;
     justify-content: center;
+}
+
+@media (min-width: 1200px){
+  #container-lista-apontamento{
+    height: auto;
+  }
 }

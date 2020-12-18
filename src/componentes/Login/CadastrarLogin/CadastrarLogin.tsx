@@ -106,6 +106,12 @@ export default function CadastrarLogin() : JSX.Element {
                   onClick={()=> cadastrarLogin(dados.usuario, dados.senha, dados.repetirSenha)}>
                     Cadastrar
                   </button>
+                  <button 
+                  type="button" 
+                  className="btn-aponta btn-vermelho w-100 mt-2"
+                  onClick={()=> historico.push("/login")}>
+                    Cancelar
+                  </button>
                 </div>
               </div>
             </div>

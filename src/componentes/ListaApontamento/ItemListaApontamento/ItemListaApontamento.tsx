@@ -6,9 +6,9 @@ import dayjs from 'dayjs';
 import { connect } from "react-redux";
 import * as apontamentoUtils from "../../../utils/Apontamento";
 import * as apontamentoActions from "../../../stores/actions/ApontamentoAction"; 
-import ModalConfirm from "../../ModalConfirm/ModalConfirm";
 import ModalConfirmarApontamento from "../../ModalConfirmarApontamento/ModalConfirmarApontamento";
 import { showToast } from "../../ToastControl/ToastControl";
+import Dropdown from "../../Dropdown/Dropdown";
 
 function ItemListaApontamento(props : any) : JSX.Element {
 
@@ -94,38 +94,45 @@ function ItemListaApontamento(props : any) : JSX.Element {
             </div>
             <div id="item-lista-apontamento-cliente">
                 <div className="row">
-                    <div className="col-7">
+                    <div className="col col-lg-7 cortar-texto">
                         {dados.TAREFA.CLIENTE_TAREFA}
                     </div>
                     <div className="col">
                         <div className="row">
-                            <div className="col-3">Inicio</div>
-                            <div className="col">{dados.DATA_HORA_INICIAL}</div>
+                            <div className="col col-lg-3 d-none d-sm-block">Inicio</div>
+                            <div className="col cortar-texto">
+                                {dados.DATA_HORA_INICIAL}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="item-lista-apontamento-descricao">
                 <div className="row">
-                    <div className="col-7">
+                    <div className="col col-lg-7">
                         {dados.DESCRICAO}
                     </div>
                     <div className="col">
                         <div className="row">
-                            <div className="col-3">Final</div>
+                            <div className="col-lg-3 d-none d-sm-block">Final</div>
                             <div className="col">{dados.DATA_HORA_FINAL}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="item-lista-apontamento-acao">
-                <button 
-                type="button"
-                className="btn-aponta btn-laranja w-100"
-                onClick={() => setShowModalConfirmarApontamento(true)}
-                >
-                    Apontar
-                </button>
+            <Dropdown titulo="Executar" cor={"dropdown-laranja"}>
+                <>
+                    <button 
+                        type="button"
+                        className="btn-aponta btn-verde w-100"
+                        onClick={() => setShowModalConfirmarApontamento(true)}
+                    >
+                        Apontar
+                    </button>          
+                </>
+            </Dropdown>
+                
             </div>
             <ModalConfirmarApontamento 
             show={showModalConfirmarApontamento}

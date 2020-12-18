@@ -82,12 +82,25 @@
     color:#105AAD;
 }
 
+#tempo-real-timer-cronometro div {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#tempo-real-timer-cronometro div div {
+    width: 100%;
+}
+
 #tempo-real-timer-acoes{
     grid-area: tempo-real-timer-acoes;
     display: flex;
     flex-direction: column-reverse;
     height: 100%;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .icone-cronometro{

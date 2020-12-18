@@ -60,7 +60,7 @@ function TempoReal(props : any) : JSX.Element {
                 <div id="container-tempo-real-info-tarefa-titulo">
                     <div 
                     id="titulo-tarefa-info-tempo-real" 
-                    className="texto-info-tempo-real">
+                    className="texto-info-tempo-real cortar-texto">
                         {props.apontamentoAtual.TAREFA.ID_TAREFA_CHAMADO}
                         {": "}
                         {props.apontamentoAtual.DESCRICAO}
@@ -229,7 +229,11 @@ function TempoReal(props : any) : JSX.Element {
                         <>
                             <div id="tempo-real-timer">
                             <div id="tempo-real-timer-cronometro">
-                            <i className="fa fa-circle icone-cronometro"/>{formatadoDiplay}
+                                <div>
+                                    <div>
+                                        <i className="fa fa-circle icone-cronometro"/>{formatadoDiplay}
+                                    </div>
+                                </div>
                             </div>
                             <div id="tempo-real-timer-acoes">
                                 <button 
@@ -247,17 +251,17 @@ function TempoReal(props : any) : JSX.Element {
                 </>
             )}
             <ModalConfirm 
-            show={showModalConfirm}
-            onHide={() => setShowModalConfirm(false)}
-            acaoConfirmada={() => encerrarApontamento(dados.ID)}
-            tituloModalConfirm={
-              "Deseja encerrar o apontamento?"
-              }
+                show={showModalConfirm}
+                onHide={() => setShowModalConfirm(false)}
+                acaoConfirmada={() => encerrarApontamento(dados.ID)}
+                tituloModalConfirm={
+                "Deseja encerrar o apontamento?"
+                }
             />
             <ModalApontamento 
-            show={showModalApontamento}
-            onHide={()=>setShowModalApontamento(false)}
-            criarApontamento={(dadosApontamento : any)=> criarApontamento(dadosApontamento)}
+                show={showModalApontamento}
+                onHide={()=>setShowModalApontamento(false)}
+                criarApontamento={(dadosApontamento : any)=> criarApontamento(dadosApontamento)}
             />
         </ div>
     )

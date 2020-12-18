@@ -1,6 +1,6 @@
 #container-login{
-    height: 25rem;
-    width: 25rem;
+    height: 400px;
+    width: 100%;
     background-color: white;
     border-radius: 5px;
     display: grid;
@@ -47,4 +47,11 @@
     border-color: #105AAD;
     border-radius: 0 !important;
     height: calc(1.5em + .75rem + 10px) !important;
+}
+
+@media (min-width: 1200px){
+    #container-login{
+        height: 25rem;
+        width: 25rem;
+    }
 }

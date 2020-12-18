@@ -1,11 +1,12 @@
 #container-item-lista-apontamento{
     display: grid;
     grid-template-areas: 
-    "item-lista-apontamento-titulo item-lista-apontamento-titulo item-lista-apontamento-acao"
-    "item-lista-apontamento-cliente item-lista-apontamento-cliente item-lista-apontamento-acao"
-    "item-lista-apontamento-descricao item-lista-apontamento-descricao item-lista-apontamento-acao";
-    grid-template-columns: 36% 36% 28%;
-    height: 90px;
+    "item-lista-apontamento-titulo item-lista-apontamento-titulo"
+    "item-lista-apontamento-cliente item-lista-apontamento-cliente"
+    "item-lista-apontamento-descricao item-lista-apontamento-descricao"
+    "item-lista-apontamento-acao item-lista-apontamento-acao";
+    grid-template-columns: 50% 50%;
+    height: 200px;
     width: 100%;
     background-color: #105AAD;
     margin-bottom: 10px;
@@ -31,6 +32,10 @@
     color: white
 }
 
+.alinhamento-texto-item-apontamento{
+    text-align: center;
+}
+
 #item-lista-apontamento-acao{
     display: flex;
     align-items: center;
@@ -45,3 +50,25 @@
     height: auto;
 }
 
+@media (min-width:1200px){
+    #container-item-lista-apontamento{
+    display: grid;
+    grid-template-areas: 
+    "item-lista-apontamento-titulo item-lista-apontamento-titulo item-lista-apontamento-acao"
+    "item-lista-apontamento-cliente item-lista-apontamento-cliente item-lista-apontamento-acao"
+    "item-lista-apontamento-descricao item-lista-apontamento-descricao item-lista-apontamento-acao";
+    grid-template-columns: 36% 36% 28%;
+    height: 90px;
+    width: 100%;
+    background-color: #105AAD;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow:  0 0 0.3em black ;
+    padding: 10px;
+    text-align: left;
+    }
+    
+    .alinhamento-texto-item-apontamento{
+        text-align: left;
+    }
+}
