@@ -5,7 +5,7 @@
     grid-template-areas:
     "espaco-esq" 
     "espaco-cen";
-    grid-template-rows: auto auto;
+    grid-template-rows: 50px auto;
     background-color: #2F8EFA;
 }
 
@@ -49,6 +49,7 @@
         display: grid;
         grid-template-areas: "espaco-esq espaco-cen espaco-dir";
         grid-template-columns: 20% 60% 20%;
+        grid-template-rows: 100%;
         min-height: 100vh;
         max-height: 100vh;
         background-color: #2F8EFA;
@@ -57,7 +58,6 @@
     
     #espaco-esq{
         grid-area: espaco-esq;
-        padding: 10px;
         display: flex;
     }
     
