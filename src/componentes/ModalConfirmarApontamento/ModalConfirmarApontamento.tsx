@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react'
 import "./ModalConfirmarApontamento.css"
 import ModalControl from "../ModalControl/ModalControl";
 
-function ModalConfirmarApontamento(props : any) {
+function ModalConfirmarApontamento(props : any) : JSX.Element {
 
     const [dados, setDados] = useState({
         idTarefa: 0,

@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 import "./SideBar.css";
 //import logo from "../../img/logo.png";
 
-export default function SideBar(props : any) {
+function SideBar(props : any) : JSX.Element {
   return (
     <div className="inSideBar">
+      {/* eslint-disable-next-line */}
       <a href="#main-menu" id="main-menu-toggle" className="menu-toggle">
         <span className="fa fa-bars" aria-hidden="true"></span>
       </a>
@@ -12,6 +13,7 @@ export default function SideBar(props : any) {
       <nav id="main-menu" className="main-menu">
         <ul>
           <li id="main-menu-close">
+            {/* eslint-disable-next-line */}
             <a href="#main-menu-toggle" className="menu-close">
               <span className="fa fa-close close-sidebar" aria-hidden="true"></span>
             </a>
@@ -24,6 +26,7 @@ export default function SideBar(props : any) {
           {props.children}
         </ul>
       </nav>
+      {/* eslint-disable-next-line */}
       <a
         href="#main-menu-toggle"
         className="backdrop"
@@ -32,3 +35,5 @@ export default function SideBar(props : any) {
     </div>
   );
 }
+
+export default SideBar;
