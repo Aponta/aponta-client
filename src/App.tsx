@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import "./EstiloPadrao.css"
+import { Redirect, useHistory } from "react-router-dom";
 import SideBar from "./componentes/SideBar";
 import MenuOption from "./componentes/MenuOption";
 import Logar from "./componentes/Login/Logar/Logar";
@@ -13,21 +14,39 @@ import Rota from "./componentes/Rotas/Rota"
 
 function App () : JSX.Element {
 
+  const historico = useHistory();
+
+    useEffect(() => {
+      if(historico){
+        if(historico.location.pathname === "/"){
+          <Redirect to={{ pathname:"/home" }} />
+        }
+      }
+    }, [historico])
+
   return (
+    <>
+    <Redirect to={{ pathname:"/home" }} />
     <div id="container-app">
       <div id="espaco-esq">
         <div id="sideBar">
           <Rota 
-          caminho="/home" 
+          caminho="/home"
           exigeAutenticacao={true}
           componente={()=> 
             <> 
               <SideBar >
-                <Rota 
-                caminho="/home" 
-                exigeAutenticacao={true}
-                componente={()=> <MenuOption><Deslogar /></MenuOption> }
-              /> 
+                <>
+                  <Rota 
+                  caminho="/home" 
+                  exigeAutenticacao={true}
+                  componente={()=> 
+                      <MenuOption>
+                        <Deslogar />
+                      </MenuOption>
+                    }
+                  />
+                </>
               </SideBar>
             </> 
             } 
@@ -66,6 +85,7 @@ function App () : JSX.Element {
         <ToastControl />
       </div>
     </div>
+    </>
   );
 }
 
