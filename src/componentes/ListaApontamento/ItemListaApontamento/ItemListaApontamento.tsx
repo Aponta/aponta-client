@@ -129,7 +129,14 @@ function ItemListaApontamento(props : any) : JSX.Element {
                         onClick={() => setShowModalConfirmarApontamento(true)}
                     >
                         Apontar
-                    </button>          
+                    </button>
+                    <button 
+                        type="button"
+                        className="btn-aponta btn-azul w-100"
+                        onClick={() => setShowModalConfirmarApontamento(true)}
+                    >
+                        Editar
+                    </button>       
                 </>
             </Dropdown>
                 
