@@ -1,10 +1,30 @@
-#container-modal-apontamento{
-    display: grid;
-    grid-template-areas: 
-    "topo-modal-apontamento"
-    "rodape-modal-apontamento"
+#topo-modal-apontamento{
+    max-height: 78px;
+    position: relative;
+    z-index: 1001;
 }
 
-#topo-modal-apontamento{
-    
+.campo-modal-apontamento:disabled{
+    background-color: #9CA1A6 !important;
+    opacity: 0.5;
+}
+
+.buscar-tarefas-modal{
+    padding-right: 3px !important;
+}
+
+.buscar-tarefas-modal:last-child{
+    padding-left: 0;
+    margin-right: 5px;
+}
+
+.buscar-tarefas-modal > button{
+    width: 100%;
+    height: 100% !important;
+    border-radius: 0;
+    color: white;
+}
+
+.buscar-tarefas-modal > button:hover{
+    color: white;
 }

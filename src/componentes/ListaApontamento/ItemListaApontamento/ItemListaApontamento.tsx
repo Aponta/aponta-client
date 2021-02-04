@@ -7,12 +7,15 @@ import { connect } from "react-redux";
 import * as apontamentoUtils from "../../../utils/Apontamento";
 import * as apontamentoActions from "../../../stores/actions/ApontamentoAction"; 
 import ModalConfirmarApontamento from "../../ModalConfirmarApontamento/ModalConfirmarApontamento";
+import ModalApontamento from "../../ModalApontamento/ModalApontamento";
 import { showToast } from "../../ToastControl/ToastControl";
 import Dropdown from "../../Dropdown/Dropdown";
+import { Tarefa } from '../../../tipos/Tipos';
 
 function ItemListaApontamento(props : any) : JSX.Element {
 
     const [showModalConfirmarApontamento, setShowModalConfirmarApontamento] = useState(false)
+    const [showModalApontamento, setShowModalApontamento] = useState(false)
     const [dados, setDados] = useState({
         ID: 0,
         DATA_HORA_INICIAL: "",
@@ -77,6 +80,16 @@ function ItemListaApontamento(props : any) : JSX.Element {
         })
     }
 
+    const editarTarefaApontamento = (tarefa : Tarefa) => {
+        apontamentoUtils.editarTarefaApontamento(dados.ID, tarefa).then((response)=>{
+            if(response.ok){
+                showToast("sucesso", "Apontamento editado com sucesso");
+            }else{
+                showToast("erro", "Erro ao editar apontamento");
+            }
+        })
+    }
+
     const montarObj = () =>{
         return {
             ID_TAREFA_CHAMADO: dados.TAREFA.ID_TAREFA_CHAMADO,
@@ -133,7 +146,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
                     <button 
                         type="button"
                         className="btn-aponta btn-azul w-100"
-                        onClick={() => setShowModalConfirmarApontamento(true)}
+                        onClick={() => setShowModalApontamento(true)}
                     >
                         Editar
                     </button>       
@@ -141,6 +154,13 @@ function ItemListaApontamento(props : any) : JSX.Element {
             </Dropdown>
                 
             </div>
+            <ModalApontamento
+            show={showModalApontamento}
+            apontamento={dados}
+            permiteEditar={false}
+            onHide={() => setShowModalApontamento(false)}
+            editarTarefaApontamento={(tarefa : Tarefa)=>editarTarefaApontamento(tarefa)}
+            />
             <ModalConfirmarApontamento 
             show={showModalConfirmarApontamento}
             onHide={() => setShowModalConfirmarApontamento(false)}
@@ -157,10 +177,8 @@ function ItemListaApontamento(props : any) : JSX.Element {
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch : any) => ({
-    
         setApontamentoAtual : (apontamentoAtual : any) => 
         dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual))
-
 });
 
 export default connect(

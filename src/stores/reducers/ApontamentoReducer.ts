@@ -1,5 +1,8 @@
 const ESTADO_INICIAL = {
-    apontamentoAtual: {}
+    apontamentoAtual: {},
+    quantidadePagina: 5,
+    paginaAtual: 0,
+    apontamentoPaginado: [],
   };
   
   export default function ApontamentoReducer(state = ESTADO_INICIAL, action: any) : any {
@@ -8,6 +11,16 @@ const ESTADO_INICIAL = {
           return {
             ...state,
             apontamentoAtual: action.apontamentoAtual,
+          };
+          case "SET_PAGINA_ATUAL":
+          return {
+            ...state,
+            paginaAtual: action.paginaAtual,
+          };
+          case "GET_APONTAMENTO_PAGINADO":
+          return {
+            ...state,
+            apontamentoPaginado: action.apontamentoPaginado,
           };
           default:
           return {

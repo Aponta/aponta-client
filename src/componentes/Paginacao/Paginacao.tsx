@@ -17,6 +17,7 @@ function Paginacao(props : any) : JSX.Element {
     const mudarPagina = (data : any) => {
         const paginaSelecionada = data.selected;
         props.paginaAtual(paginaSelecionada);
+        props.setCarregando(true);
     }
 
     return (

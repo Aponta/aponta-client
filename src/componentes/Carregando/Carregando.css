@@ -1,15 +1,33 @@
-.container-carregando{
-    min-height: auto;
-    height: 100%;
-    width: 100%;
-}
-
-.icone-carregando{
+.container{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100%;
-    width: 100%;
-    font-size: 20px;
-    color: #105AAD;
-}
+}  
+    .carregando{
+      width: 50px;
+      height: 50px;
+      transition: .5s ease-in-out;
+      animation: loaderAnim 1s infinite;
+  
+      background:
+        conic-gradient(
+          from 90deg,
+          transparent 12.5%, #C46D08 12.5%,
+          #C46D08 37.5%, transparent 37.5%,
+          transparent 62.5%, #105AAD 62.5%,
+          #105AAD 87.5%, transparent 87.5%
+        )
+        50% 50% / 32% 50%
+        no-repeat;
+    }
+  
+ 
+  
+  
+  @keyframes loaderAnim{
+    100%{
+      transform:rotate(360deg);
+    }
+  }

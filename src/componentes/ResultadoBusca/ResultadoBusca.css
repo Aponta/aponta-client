@@ -1,0 +1,16 @@
+#container-resultado-busca{
+    background-color: #C46D08;
+    border: #9CA1A6 1px solid;
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: white;
+}
+
+.linha-resultado-busca{
+    padding: 5px 0px;
+}
+
+.linha-resultado-busca:hover{
+    cursor: pointer;
+}

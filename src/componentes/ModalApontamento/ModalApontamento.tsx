@@ -5,28 +5,37 @@ import "./ModalApontamento.css";
 import ModalControl from "../ModalControl/ModalControl";
 import ResultadoBusca from "../ResultadoBusca/ResultadoBusca";
 import { showToast } from '../ToastControl/ToastControl';
-import * as tipos from "../../Tipos/Tipos";
+import * as tipos from "../../tipos/Tipos";
 import ReactDOM from 'react-dom';
 
 function ModalApontamento(props : any) : JSX.Element {
 
     const [dados, setDados] = useState({
+        idApontamento: 0,
         idTarefa: 0,
+        idTarefaChamado: "",
         clienteTarefa: "",
         descricaoTarefa: "",
     });
     const [showResultado, setShowResultado] = useState(false);
     const [resultadoDisplay, setResultadoDisplay] = useState(<></>)
+    const [permiteEditar, setPermiteEditar] = useState(true);
 
     useEffect(() => {
       if(props.apontamento){
         setDados({
-            idTarefa: props.apontamento.ID_TAREFA_CHAMADO,
-            clienteTarefa: props.apontamento.CLIENTE_TAREFA,
+            idApontamento: props.apontamento.ID,
+            idTarefa: props.apontamento.ID_TAREFA,
+            idTarefaChamado: props.apontamento.TAREFA.ID_TAREFA_CHAMADO,
+            clienteTarefa: props.apontamento.TAREFA.CLIENTE_TAREFA,
             descricaoTarefa: props.apontamento.DESCRICAO,
         })
       }
-  }, [])
+
+      if(props.permiteEditar == false){
+        setPermiteEditar(false);
+      }
+  }, [props.show])
 
   useEffect(() => {
     if (showResultado) {
@@ -36,9 +45,10 @@ function ModalApontamento(props : any) : JSX.Element {
     }
   }, [showResultado])
 
-    const montarObj = () => {
+    const montarObjTarefa = () => {
         return {
-            ID_TAREFA_CHAMADO: dados.idTarefa,
+            ID_TAREFA: dados.idTarefa,
+            ID_TAREFA_CHAMADO: dados.idTarefaChamado,
             CLIENTE_TAREFA: dados.clienteTarefa,
             DESCRICAO: dados.descricaoTarefa
         }
@@ -52,22 +62,27 @@ function ModalApontamento(props : any) : JSX.Element {
       setShowResultado(true);
       const elementoPai = document.getElementById("montarBusca");
       setResultadoDisplay(ReactDOM.createPortal(
-        <div className="col">
-          <ResultadoBusca registros={registros}/>
-        </div>, elementoPai as Element));
+      <ResultadoBusca 
+      nomeCol1={"ID"} 
+      nomeCol2={"Cliente"} 
+      retornaSelecionado={(tarefa : any) => preencheTarefa(tarefa)}
+      registros={registros}/>, elementoPai as Element));
     }
 
     const desmontarResultadoBusca = () =>{
-      const elementoPai = document.getElementById("montarBusca");
-      setResultadoDisplay(ReactDOM.createPortal(<></>, elementoPai as Element));
+      if(document.getElementById("montarBusca")){
+        const elementoPai = document.getElementById("montarBusca");
+        setResultadoDisplay(ReactDOM.createPortal(<></>, elementoPai as Element));
+        setShowResultado(false);
+      }
     }
 
-    const listarTarefas = (idTarefa : string) =>{
-      if(idTarefa.match(/[a-z]|[A-Z]|["'!@#$%¨&*()_+=`´^~{}/?;:]/)){
+    const listarTarefas = (idTarefaChamado : string) =>{
+      if(idTarefaChamado && idTarefaChamado.toString().match(/[a-z]|[A-Z]|["'!@#$%¨&*()_+=`´^~{}/?;:]/)){
         showToast("erro", "Dados inválidos");
         return;
       }
-        tarefaUtils.listarTarefas(idTarefa ?? 0).then((response)=>{
+        tarefaUtils.listarTarefas(idTarefaChamado ?? 0).then((response)=>{
           response.json().then((data) =>{
             if(data.message){
               desmontarResultadoBusca();
@@ -87,6 +102,16 @@ function ModalApontamento(props : any) : JSX.Element {
         })
     }
 
+    const preencheTarefa = (tarefa : any) => {
+      setDados({
+        idApontamento: dados.idApontamento,
+        idTarefa: tarefa.ID_TAREFA,
+        idTarefaChamado: tarefa.ID_TAREFA_CHAMADO,
+        clienteTarefa: tarefa.CLIENTE_TAREFA,
+        descricaoTarefa: dados.descricaoTarefa,
+      })
+    }
+
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         setDados({
           ...dados,
@@ -104,19 +129,28 @@ function ModalApontamento(props : any) : JSX.Element {
           tituloModal="Apontamento"
           conteudoBody={
               <div className="form">
-                <div className="form-group">
+                <div id="topo-modal-apontamento" className="form-group">
                     <div className="form-row">
                         <div className="col-4">
                             <label className="label-modal label-modal-titulo">ID Tarefa</label>
-                            <input
-                            type="text"
-                            id="campo-idTarefa"
-                            name="idTarefa"
-                            className="form-control"
-                            onDoubleClick={()=> listarTarefas(dados.idTarefa as unknown as string)}
-                            value={dados.idTarefa == 0 ? "" : dados.idTarefa}
-                            onChange={(event)=> handleInputChange(event)}
-                            />
+                            <div className="row">
+                              <div className="col buscar-tarefas-modal">
+                                <input
+                                type="text"
+                                id="campo-idTarefaChamado"
+                                name="idTarefaChamado"
+                                className="form-control"
+                                value={dados.idTarefaChamado}
+                                onChange={(event)=> handleInputChange(event)}
+                                />
+                              </div>
+                              <div className="col buscar-tarefas-modal">
+                                <button 
+                                className="btn btn-laranja buscar-tarefas-modal"
+                                onClick={()=> listarTarefas(dados.idTarefaChamado as unknown as string)}
+                                ><i className="fa fa-search"/></button>
+                              </div>
+                            </div>
                         </div>
                         <div className="col">
                             <label className="label-modal label-modal-titulo">Cliente</label>
@@ -124,13 +158,14 @@ function ModalApontamento(props : any) : JSX.Element {
                             type="text"
                             id="campo-clienteTarefa"
                             name="clienteTarefa"
-                            className="form-control"
+                            className="form-control campo-modal-apontamento"
+                            disabled={!permiteEditar}
                             value={dados.clienteTarefa}
                             onChange={(event)=> handleInputChange(event)}
                             />
                         </div>
                     </div>
-                    <div className="row" id="montarBusca">
+                    <div id="montarBusca">
                       {resultadoDisplay}
                     </div>
                 </div>
@@ -138,32 +173,51 @@ function ModalApontamento(props : any) : JSX.Element {
                     <div className="form-row">
                         <div className="col">
                             <label className="label-modal label-modal-titulo">Descrição</label>
-                            <input
-                            type="text"
+                            <textarea
+                            rows={5}
                             id="campo-descricaoTarefa"
                             name="descricaoTarefa"
-                            className="form-control"
+                            className="form-control campo-modal-apontamento"
+                            disabled={!permiteEditar}
                             value={dados.descricaoTarefa}
-                            onChange={(event)=> handleInputChange(event)}
+                            onChange={(event : any)=> handleInputChange(event)}
                             />
                         </div>
                     </div>
                 </div>
               </div>
           }
-          conteudoFooter={
-                <>
+          conteudoFooter =
+          {
+            <>
+              {permiteEditar == false && 
+                (
+                  <div>
+                    <button
+                      type="button"
+                      className="btn-aponta btn-laranja w-100-px"
+                      onClick={() => props.editarTarefaApontamento(montarObjTarefa())}
+                    >
+                      Editar
+                    </button>
+                  </div>
+                )
+              }
+              {permiteEditar &&
+                (
                   <div>
                     <button
                       type="button"
                       className="btn-aponta btn-verde w-100-px"
-                      onClick={() => props.criarApontamento(montarObj())}
+                      onClick={() => props.criarApontamento(montarObjTarefa())}
                     >
                       Criar
                     </button>
                   </div>
-                </>
+                )
               }
+            </>
+          }
         />
     )
 }

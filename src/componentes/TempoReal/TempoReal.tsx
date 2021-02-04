@@ -62,15 +62,15 @@ function TempoReal(props : any) : JSX.Element {
                     id="titulo-tarefa-info-tempo-real" 
                     className="texto-info-tempo-real cortar-texto">
                         {props.apontamentoAtual.TAREFA.ID_TAREFA_CHAMADO}
-                        {": "}
-                        {props.apontamentoAtual.DESCRICAO}
+                        {" - "}
+                        {props.apontamentoAtual.TAREFA.CLIENTE_TAREFA}
                     </div>
                 </div>
                 <div id="container-tempo-real-info-tarefa-descricao">
                     <div 
                     id="cliente-tarefa-info-tempo-real" 
                     className="texto-info-tempo-real">
-                        {props.apontamentoAtual.TAREFA.CLIENTE_TAREFA}
+                        {props.apontamentoAtual.DESCRICAO}
                     </div>
                 </div>
             </>
@@ -127,7 +127,7 @@ function TempoReal(props : any) : JSX.Element {
 
     const criarApontamento = (dadosApontamento : any) => {
 
-        if(dadosApontamento.ID_TAREFA_CHAMADO.match(/[a-zA-Z]/)){
+        if(dadosApontamento.ID_TAREFA_CHAMADO.toString().match(/[a-zA-Z]/)){
             showToast("erro", "Id da tarefa deve conter apenas numeros");
             return
         }

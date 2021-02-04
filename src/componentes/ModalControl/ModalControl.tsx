@@ -15,6 +15,7 @@ export default function ModalControl(props : any) : JSX.Element {
         size={props.tamanhoModal || "lg"}
         aria-labelledby="contained-modal-title-vcenter"
         className={props.estiloModal}
+        onHide={()=>props.onHide()}
         centered
       >
         <ModalHeader className={props.estiloModalHeader}>
