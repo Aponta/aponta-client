@@ -26,7 +26,7 @@ function App () : JSX.Element {
 
   return (
     <>
-    <Redirect to={{ pathname:"/home" }} />
+    <Redirect to={{ pathname:"/login" }} />
     <div id="container-app">
       <div id="espaco-esq">
         <div id="sideBar">

@@ -131,7 +131,7 @@ function ModalApontamento(props : any) : JSX.Element {
               <div className="form">
                 <div id="topo-modal-apontamento" className="form-group">
                     <div className="form-row">
-                        <div className="col-4">
+                        <div className="col-xl-4 col-6">
                             <label className="label-modal label-modal-titulo">ID Tarefa</label>
                             <div className="row">
                               <div className="col buscar-tarefas-modal">

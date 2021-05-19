@@ -145,7 +145,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
                     </button>
                     <button 
                         type="button"
-                        className="btn-aponta btn-azul w-100"
+                        className="btn-aponta btn-amarelo w-100"
                         onClick={() => setShowModalApontamento(true)}
                     >
                         Editar

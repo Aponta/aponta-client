@@ -55,13 +55,18 @@
 }
 
 .btn-amarelo{
-    background-color: #EAEB01;
-    border-color: #EAEB01;
+    background-color: #BFBF0D;
+    border-color: #BFBF0D;
 }
 
 .btn-laranja{
     background-color: #C46D08;
     border-color: #C46D08;
+}
+
+.btn-rosa{
+    background-color: #F52690;
+    border-color: #F52690;
 }
 
 .w-100-px{

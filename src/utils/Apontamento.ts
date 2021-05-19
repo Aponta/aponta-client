@@ -37,11 +37,10 @@ export const buscaUltimoApontamento = async () : Promise<Response> =>  {
 }
 
 export const encerrarApontamento = async (idApontamento: number) : Promise<Response>  =>{
-        
-    const requisicao = new Date().toJSON();
+    
     const caminhoRequisicao = "/apontamento/" + idApontamento;
 
-    return backEndUtils.chamarBackEnd("PUT", caminhoRequisicao, requisicao).then((response)=>{
+    return backEndUtils.chamarBackEnd("PUT", caminhoRequisicao, "").then((response)=>{
         return response;
     })
 }

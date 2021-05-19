@@ -31,7 +31,7 @@ export default function Deslogar() : JSX.Element {
             type="button"
             className="btn-aponta btn-vermelho w-100"
             onClick={()=> setShowModalConfirm(true)}>
-                Deslogar-se
+                Deslogar
             </button>
         </div>
         <ModalConfirm 
@@ -39,7 +39,7 @@ export default function Deslogar() : JSX.Element {
         onHide={() => setShowModalConfirm(false)}
         acaoConfirmada={() => deslogar()}
         tituloModalConfirm={
-          "Deseja deslogar-se?"
+          "Deseja deslogar?"
           }
         />
         </>

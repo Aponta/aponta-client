@@ -7,6 +7,7 @@
     "espaco-cen";
     grid-template-rows: 50px auto;
     background-color: #2F8EFA;
+    background: linear-gradient(0deg, rgba(16,90,173,1) 0%, rgba(47,142,250,1) 64%, rgba(0,212,255,1) 100%);
 }
 
 #espaco-cen{
@@ -52,7 +53,6 @@
         grid-template-rows: 100%;
         min-height: 100vh;
         max-height: 100vh;
-        background-color: #2F8EFA;
         overflow: hidden !important;
     }
     
