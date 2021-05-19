@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import * as backEndUtils from "../../utils/BackEnd";
 
 export function setApontamentoAtual(apontamentoAtual : any) {

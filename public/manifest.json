@@ -1,7 +1,13 @@
 {
   "short_name": "Aponta",
   "name": "Aponta",
-  "icons": [],
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
