@@ -5,6 +5,7 @@ export const chamarBackEnd = async (
     caminho : string, 
     corpo : any) : Promise<Response> => {
         
+        
     let tokenAutenticacao = localStorage.getItem("tokenAutenticacao")
 
     if(tokenAutenticacao){
