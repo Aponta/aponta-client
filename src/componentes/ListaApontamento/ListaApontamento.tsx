@@ -34,16 +34,19 @@ function ListaApontamento(props : any) : JSX.Element{
     }, [props.apontamentoPaginado])
 
     const montarPaginacao = (totalRegistros : number) => {
-        if(totalRegistros <= props.quantidadePagina){
-            setPaginacaoDisplay(<></>)
-        }else{
-            setPaginacaoDisplay(
-                <Paginacao 
-                quantidadePagina={props.quantidadePagina} 
-                totalRegistros={totalRegistros} 
-                paginaAtual={(paginaSelecionada : number) => paginaAtual(paginaSelecionada)}
-                setCarregando={(bool : boolean) => setCarregando(bool)}
-                />)
+        
+        if(totalRegistros){
+            if(totalRegistros <= props.quantidadePagina){
+                setPaginacaoDisplay(<></>)
+            }else{
+                setPaginacaoDisplay(
+                    <Paginacao 
+                    quantidadePagina={props.quantidadePagina} 
+                    totalRegistros={totalRegistros} 
+                    paginaAtual={(paginaSelecionada : number) => paginaAtual(paginaSelecionada)}
+                    setCarregando={(bool : boolean) => setCarregando(bool)}
+                    />)
+            }
         }
     }
 

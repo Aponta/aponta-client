@@ -20,13 +20,13 @@ export default function ModalControl(props : any) : JSX.Element {
       >
         <ModalHeader className={props.estiloModalHeader}>
           <ModalTitle>{props.tituloModal}</ModalTitle>
-          {props.conteudoHeader || (
+          {!props.esconderFechar ? (
             <div className="close-modal">
               <a href="#" onClick={() => props.onHide()}>
                 <span className="fa fa-close close-modal" />
               </a>
             </div>
-          )}
+          ) : <></>}
         </ModalHeader>
         <ModalBody className={props.estiloModalBody}>
           {props.conteudoBody}

@@ -87,7 +87,7 @@ function Logar() : JSX.Element {
                 <div className="col">
                 <button 
                 type="button" 
-                className="btn btn-aponta btn-azul w-100"
+                className="btn btn-aponta btn-primary w-100"
                 onClick={()=>logar(dados.usuario, dados.senha)}>
                     Login
                   </button>

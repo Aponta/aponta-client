@@ -1,10 +1,16 @@
 
 .Toastify__toast--success {
-  background: #07bc0c;
+  background: var(--primary-color) !important;
 }
 .Toastify__toast--warning {
-  background: #C3CF08 !important;
+  background: var(--tertiary-color) !important;
 }
 .Toastify__toast--error {
-  background: #B81E10 !important;
+  background: white !important;
+  border: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.Toastify__toast--error > .Toastify__progress-bar {
+  background-color: var(--tertiary-color) !important;
 }

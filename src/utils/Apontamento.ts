@@ -1,4 +1,4 @@
-import * as tipos from "../tipos/Tipos";
+import * as tipos from "../Tipos/Tipos";
 import * as backEndUtils from "./BackEnd";
 
 export const criarApontamento = async (dadosApontamento : any) : Promise<Response> => {
@@ -58,4 +58,12 @@ export const editarTarefaApontamento = async (idApontamento: number, tarefa : ti
     return backEndUtils.chamarBackEnd("PUT", caminhoRequisicao, requisicao).then((response)=>{
         return response;
     })
+}
+
+export const excluirApontamento = async (idApontamento: number) : Promise<any>  =>{
+
+    const caminhoRequisicao = "/apontamento/" + idApontamento;
+
+    return backEndUtils.chamarBackEnd("DELETE", caminhoRequisicao, "")
+        .then((response)=> response.json().then((data) => data))
 }

@@ -1,11 +1,10 @@
-export const linkBackEnd = process.env.REACT_APP_API_URL_PROD;
+export const linkBackEnd = process.env.REACT_APP_API_URL_DEV;
 
 export const chamarBackEnd = async (
     metodo : string, 
     caminho : string, 
     corpo : any) : Promise<Response> => {
-        
-        
+ 
     let tokenAutenticacao = localStorage.getItem("tokenAutenticacao")
 
     if(tokenAutenticacao){

@@ -29,7 +29,7 @@ export default function Deslogar() : JSX.Element {
         <div id="constainer-deslogar">
             <button 
             type="button"
-            className="btn-aponta btn-vermelho w-100"
+            className="btn-aponta btn-primary w-100"
             onClick={()=> setShowModalConfirm(true)}>
                 Deslogar
             </button>

@@ -60,10 +60,8 @@ function TempoReal(props : any) : JSX.Element {
                 <div id="container-tempo-real-info-tarefa-titulo">
                     <div 
                     id="titulo-tarefa-info-tempo-real" 
-                    className="texto-info-tempo-real cortar-texto">
-                        {props.apontamentoAtual.TAREFA.ID_TAREFA_CHAMADO}
-                        {" - "}
-                        {props.apontamentoAtual.TAREFA.CLIENTE_TAREFA}
+                    className="texto-info-tempo-real cortar-texto-2">
+                        {props.apontamentoAtual.TAREFA.ID_TAREFA_CHAMADO + " - " + props.apontamentoAtual.TAREFA.CLIENTE_TAREFA}
                     </div>
                 </div>
                 <div id="container-tempo-real-info-tarefa-descricao">
@@ -79,9 +77,7 @@ function TempoReal(props : any) : JSX.Element {
     }, [props.apontamentoAtual])
 
     useEffect(() => {
-        if(loginUtils.usuarioLogado(true)){
-            buscaUltimoApontamento()
-        }
+        loginUtils.usuarioLogado(true).then(response => response ? buscaUltimoApontamento() : undefined)
     }, [])
 
     const montarDisplayBase = () =>{
@@ -92,15 +88,15 @@ function TempoReal(props : any) : JSX.Element {
                         <div 
                             id="titulo-tarefa-info-tempo-real" 
                             className="texto-info-tempo-real">
-                                <div id="titulo-tarefa">
+                                <h4 id="titulo-tarefa">
                                     Livre
-                                </div>
+                                </h4>
                         </div>
                     </div>
                     <div id="container-tempo-real-info-tarefa-descricao">
                         <button 
                         type="button"
-                        className="btn-aponta btn-azul w-100"
+                        className="btn-aponta btn-primary w-100"
                         onClick={()=> setShowModalApontamento(true)}
                         >
                             Novo apontamento
@@ -127,13 +123,23 @@ function TempoReal(props : any) : JSX.Element {
 
     const criarApontamento = (dadosApontamento : any) => {
 
+        if(!dadosApontamento.ID_TAREFA_CHAMADO){
+            showToast("erro", "Preencha a tarefa");
+            return
+        }
+
         if(dadosApontamento.ID_TAREFA_CHAMADO.toString().match(/[a-zA-Z]/)){
-            showToast("erro", "Id da tarefa deve conter apenas numeros");
+            showToast("erro", "A tarefa deve conter apenas números");
+            return
+        }
+
+        if(!dadosApontamento.CLIENTE_TAREFA){
+            showToast("erro", "Preencha o cliente");
             return
         }
 
         if(!dadosApontamento.DESCRICAO.match(/[a-zA-Z]/)){
-            showToast("erro", "Preencha a descricao");
+            showToast("erro", "Preencha a descrição");
             return
         }
 
@@ -169,7 +175,7 @@ function TempoReal(props : any) : JSX.Element {
                             }
                         })
                     }else{
-                        document.location.reload(true);
+                        document.location.reload();
                     }
                 })
             }
@@ -230,15 +236,15 @@ function TempoReal(props : any) : JSX.Element {
                             <div id="tempo-real-timer">
                             <div id="tempo-real-timer-cronometro">
                                 <div>
-                                    <div>
+                                    <h4>
                                         <i className="fa fa-circle icone-cronometro"/>{formatadoDiplay}
-                                    </div>
+                                    </h4>
                                 </div>
                             </div>
                             <div id="tempo-real-timer-acoes">
                                 <button 
                                 type="button"
-                                className="btn-aponta btn-vermelho w-100"
+                                className="btn-aponta btn-primary w-100"
                                 onClick={()=> setShowModalConfirm(true)}
                                 >
                                     Encerrar

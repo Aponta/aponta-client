@@ -15,7 +15,6 @@
     color: white;
 }
 
-
 .label-modal-titulo{
     font-weight: bold;
 }
@@ -36,37 +35,52 @@
 
 .btn-aponta:hover{
     color: white;
-    box-shadow: 0 0 0.3rem black;;
+    box-shadow: 0 0 0.3rem black;
 }
 
-.btn-vermelho{
-    background-color: #EB1E11;
-    border-color: #EB1E11;
+.btn-primary{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-.btn-azul{
-    background-color: #105AAD;
-    border-color: #105AAD;
+.btn-secondary{
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
-.btn-verde{
-    background-color: #076B03;
-    border-color: #076B03;
+.btn-tertiary{
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
 }
 
-.btn-amarelo{
-    background-color: #BFBF0D;
-    border-color: #BFBF0D;
+.btn-alternative-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-.btn-laranja{
-    background-color: #C46D08;
-    border-color: #C46D08;
+.btn-alternative-secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
-.btn-rosa{
-    background-color: #F52690;
-    border-color: #F52690;
+.btn-alternative-tertiary {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+}
+
+.btn-alternative-primary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-alternative-secondary:hover {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn-alternative-tertiary:hover {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
 }
 
 .w-100-px{
@@ -89,9 +103,26 @@
     height: auto !important;
 }
 
-.cortar-texto{
+.cortar-texto-1{
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.cortar-texto-2{
     overflow: hidden;
     display: -webkit-box !important;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+input[type="text"], input[type="password"]{
+    background-color: white !important;
+    color: var(--primary-color) !important;
+}
+
+textarea{
+    background-color: white !important;
+    color: var(--primary-color) !important;
 }

@@ -5,20 +5,20 @@
 .item-pagina{
     height: 100%;
     width: 50px;
-    border-top: 1px solid #105AAD;
-    border-bottom: 1px solid #105AAD;
-    border-right: 1px solid #105AAD;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
     cursor: pointer;
 }
 
 .link-item-pagina{
-    color: #105AAD;
+    color: var(--primary-color);
     font-weight: bold;
     display: block;
 }
 
 .pagina-atual{
-    background-color: #105AAD;
+    background-color: var(--primary-color);
 }
 
 .pagina-atual > a{
@@ -30,5 +30,5 @@
 }
 
 .item-pagina:first-child{
-    border-left: 1px solid #105AAD;
+    border-left: 1px solid var(--primary-color);
 }

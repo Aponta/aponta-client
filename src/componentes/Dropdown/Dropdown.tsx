@@ -1,11 +1,6 @@
-import React from 'react'
 import "./Dropdown.css";
 
 function Dropdown(props : any) : JSX.Element {
-
-   
-
-
     return (
         <>
         <div className={props.cor + " dropdown"}>

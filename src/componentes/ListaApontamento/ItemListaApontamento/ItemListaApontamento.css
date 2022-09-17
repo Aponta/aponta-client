@@ -1,14 +1,12 @@
-#container-item-lista-apontamento{
+.container-item-lista-apontamento{
     display: grid;
     grid-template-areas: 
-    "item-lista-apontamento-titulo item-lista-apontamento-titulo"
-    "item-lista-apontamento-cliente item-lista-apontamento-cliente"
-    "item-lista-apontamento-descricao item-lista-apontamento-descricao"
-    "item-lista-apontamento-acao item-lista-apontamento-acao";
-    grid-template-columns: 50% 50%;
+    "item-lista-apontamento-titulo"
+    "item-lista-apontamento-hora"
+    "item-lista-apontamento-acao";
     height: 200px;
     width: 100%;
-    background-color: #105AAD;
+    background-color: var(--primary-color);
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow:  0 0 0.3em black ;
@@ -16,27 +14,22 @@
     text-align: left;
 }
 
-
-#item-lista-apontamento-titulo{
+.item-lista-apontamento-titulo{
     grid-area: item-lista-apontamento-titulo;
     color: white;
 }
 
-#item-lista-apontamento-cliente{
-    grid-area: item-lista-apontamento-cliente;
-    color: white
-}
-
-#item-lista-apontamento-descricao{
-    grid-area: item-lista-apontamento-descricao;
-    color: white
+.item-lista-apontamento-hora{
+    grid-area: item-lista-apontamento-hora;
+    height: 35px !important;
+    color: white;
 }
 
 .alinhamento-texto-item-apontamento{
     text-align: center;
 }
 
-#item-lista-apontamento-acao{
+.item-lista-apontamento-acao{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,23 +37,24 @@
 }
 
 .item-apontamento-titulo{
-    background-color: #C46D08;
+    background-color: var(--tertiary-color);
+    padding: 5px;
+    height: 35px !important;
     color: white;
     font-weight: bold;
     height: auto;
 }
 
 @media (min-width:1200px){
-    #container-item-lista-apontamento{
+    .container-item-lista-apontamento{
     display: grid;
     grid-template-areas: 
-    "item-lista-apontamento-titulo item-lista-apontamento-titulo item-lista-apontamento-acao"
-    "item-lista-apontamento-cliente item-lista-apontamento-cliente item-lista-apontamento-acao"
-    "item-lista-apontamento-descricao item-lista-apontamento-descricao item-lista-apontamento-acao";
-    grid-template-columns: 36% 36% 28%;
+    "item-lista-apontamento-titulo item-lista-apontamento-acao"
+    "item-lista-apontamento-hora item-lista-apontamento-acao";
+    grid-template-columns: 70% 30%;
     height: 90px;
     width: 100%;
-    background-color: #105AAD;
+    background-color: var(--primary-color);
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow:  0 0 0.3em black ;
@@ -70,5 +64,14 @@
     
     .alinhamento-texto-item-apontamento{
         text-align: left;
+    }
+
+    
+    .item-lista-apontamento-acao{
+        margin-left: 20px;
+    }
+
+    h4 {
+        width: 67%;
     }
 }

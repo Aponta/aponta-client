@@ -73,7 +73,7 @@ export default function CadastrarLogin() : JSX.Element {
                   <input 
                   type="text" 
                   name="usuario"
-                  placeholder="Usuário" 
+                  placeholder="Email" 
                   className="form-control text-center" 
                   onChange={(event) => handleInputChange(event)} />
                 </div>
@@ -102,13 +102,13 @@ export default function CadastrarLogin() : JSX.Element {
                 <div className="col">
                   <button 
                   type="button" 
-                  className="btn-aponta btn-azul w-100"
+                  className="btn-aponta btn-primary w-100"
                   onClick={()=> cadastrarLogin(dados.usuario, dados.senha, dados.repetirSenha)}>
                     Cadastrar
                   </button>
                   <button 
                   type="button" 
-                  className="btn-aponta btn-vermelho w-100 mt-2"
+                  className="btn-aponta btn-alternative-primary w-100 mt-2"
                   onClick={()=> historico.push("/login")}>
                     Cancelar
                   </button>

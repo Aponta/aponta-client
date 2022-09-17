@@ -10,12 +10,14 @@ import ModalConfirmarApontamento from "../../ModalConfirmarApontamento/ModalConf
 import ModalApontamento from "../../ModalApontamento/ModalApontamento";
 import { showToast } from "../../ToastControl/ToastControl";
 import Dropdown from "../../Dropdown/Dropdown";
-import { Tarefa } from '../../../tipos/Tipos';
+import { Tarefa } from '../../../Tipos/Tipos';
+import ModalConfirm from '../../ModalConfirm';
 
 function ItemListaApontamento(props : any) : JSX.Element {
 
     const [showModalConfirmarApontamento, setShowModalConfirmarApontamento] = useState(false)
     const [showModalApontamento, setShowModalApontamento] = useState(false)
+    const [showModalConfirmarExclusão, setShowModalConfirmarExclusão] = useState(false)
     const [dados, setDados] = useState({
         ID: 0,
         DATA_HORA_INICIAL: "",
@@ -90,6 +92,17 @@ function ItemListaApontamento(props : any) : JSX.Element {
         })
     }
 
+    const excluirApontamento = (idApontamento: number) => {
+        apontamentoUtils.excluirApontamento(idApontamento).then((data) => {
+            if(data.success){
+                props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
+                showToast('sucesso', data.message);
+            }
+            else
+                showToast('erro', data.message);
+        })
+    }
+
     const montarObj = () =>{
         return {
             ID_TAREFA_CHAMADO: dados.TAREFA.ID_TAREFA_CHAMADO,
@@ -99,56 +112,46 @@ function ItemListaApontamento(props : any) : JSX.Element {
     }
 
     return (
-        <div id="container-item-lista-apontamento">
-            <div id="item-lista-apontamento-titulo">
-                <span className="item-apontamento-titulo">
-                    {dados.TAREFA.ID_TAREFA_CHAMADO}
-                </span>
+        <div className="container-item-lista-apontamento">
+            <div className="item-lista-apontamento-titulo ">
+                <h4 className="item-apontamento-titulo cortar-texto-1 alinhamento-texto-item-apontamento">
+                    {dados.TAREFA.ID_TAREFA_CHAMADO + " - " + dados.TAREFA.CLIENTE_TAREFA}
+                </h4>
             </div>
-            <div id="item-lista-apontamento-cliente">
-                <div className="row">
-                    <div className="col col-lg-7 cortar-texto">
-                        {dados.TAREFA.CLIENTE_TAREFA}
-                    </div>
-                    <div className="col">
-                        <div className="row">
-                            <div className="col col-lg-3 d-none d-sm-block">Inicio</div>
-                            <div className="col cortar-texto">
-                                {dados.DATA_HORA_INICIAL}
-                            </div>
-                        </div>
+            <div className="item-lista-apontamento-hora">
+                <div className="row alinhamento-texto-item-apontamento">
+                    <div className="col-auto cortar-texto-1 w-100">
+                        {dados.DATA_HORA_INICIAL}
+                        &nbsp;
+                        Até
+                        &nbsp;
+                        {dados.DATA_HORA_FINAL}
                     </div>
                 </div>
             </div>
-            <div id="item-lista-apontamento-descricao">
-                <div className="row">
-                    <div className="col col-lg-7">
-                        {dados.DESCRICAO}
-                    </div>
-                    <div className="col">
-                        <div className="row">
-                            <div className="col-lg-3 d-none d-sm-block">Final</div>
-                            <div className="col">{dados.DATA_HORA_FINAL}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="item-lista-apontamento-acao">
-            <Dropdown titulo="Executar" cor={"dropdown-laranja"}>
+            <div className="item-lista-apontamento-acao">
+            <Dropdown titulo="Executar" cor={"dropdown-tertiary"}>
                 <>
                     <button 
                         type="button"
-                        className="btn-aponta btn-verde w-100"
+                        className="btn-aponta btn-secondary w-100"
                         onClick={() => setShowModalConfirmarApontamento(true)}
                     >
                         Apontar
                     </button>
                     <button 
                         type="button"
-                        className="btn-aponta btn-amarelo w-100"
+                        className="btn-aponta btn-tertiary w-100"
                         onClick={() => setShowModalApontamento(true)}
                     >
                         Editar
+                    </button>
+                    <button 
+                        type="button"
+                        className="btn-aponta btn-secondary w-100"
+                        onClick={() => setShowModalConfirmarExclusão(true)}
+                    >
+                        Exluir
                     </button>       
                 </>
             </Dropdown>
@@ -170,15 +173,26 @@ function ItemListaApontamento(props : any) : JSX.Element {
               "Deseja confirmar o apontamento ?"
               }
             />
+            <ModalConfirm 
+            show={showModalConfirmarExclusão}
+            onHide={() => setShowModalConfirmarExclusão(false)}
+            acaoConfirmada={() => excluirApontamento(dados.ID)}
+            tituloModalConfirm={"Confirmar exclusão?"}
+            />
         </div>
     )
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state : any) => ({
+    quantidadePagina: state.ApontamentoReducer.quantidadePagina,
+    paginaAtual: state.ApontamentoReducer.paginaAtual,
+});
 
 const mapDispatchToProps = (dispatch : any) => ({
-        setApontamentoAtual : (apontamentoAtual : any) => 
-        dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual))
+    setApontamentoAtual : (apontamentoAtual : any) => 
+        dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual)),
+    getApontamentoPaginado : (quantidadePagina : number, paginaAtual : number) => 
+        dispatch(apontamentoActions.getApontamentoPaginado(quantidadePagina, paginaAtual)),
 });
 
 export default connect(

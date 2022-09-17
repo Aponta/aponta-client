@@ -6,7 +6,7 @@ import "./ModalApontamento.css";
 import ModalControl from "../ModalControl/ModalControl";
 import ResultadoBusca from "../ResultadoBusca/ResultadoBusca";
 import { showToast } from '../ToastControl/ToastControl';
-import * as tipos from "../../tipos/Tipos";
+import * as tipos from "../../Tipos/Tipos";
 import ReactDOM from 'react-dom';
 
 function ModalApontamento(props : any) : JSX.Element {
@@ -36,6 +36,16 @@ function ModalApontamento(props : any) : JSX.Element {
       if(props.permiteEditar == false){
         setPermiteEditar(false);
       }
+
+      if(!props.show){
+        setDados({
+          idApontamento: 0,
+          idTarefa: 0,
+          idTarefaChamado: "",
+          clienteTarefa: "",
+          descricaoTarefa: "",
+        })
+      }
   }, [props.show])
 
   useEffect(() => {
@@ -48,7 +58,7 @@ function ModalApontamento(props : any) : JSX.Element {
 
     const montarObjTarefa = () => {
         return {
-            ID_TAREFA: dados.idTarefa,
+            ID_TAREFA: dados.idTarefa || 0,
             ID_TAREFA_CHAMADO: dados.idTarefaChamado,
             CLIENTE_TAREFA: dados.clienteTarefa,
             DESCRICAO: dados.descricaoTarefa
@@ -133,7 +143,6 @@ function ModalApontamento(props : any) : JSX.Element {
                 <div id="topo-modal-apontamento" className="form-group">
                     <div className="form-row">
                         <div className="col-xl-4 col-6">
-                            <label className="label-modal label-modal-titulo">ID Tarefa</label>
                             <div className="row">
                               <div className="col buscar-tarefas-modal">
                                 <input
@@ -141,24 +150,25 @@ function ModalApontamento(props : any) : JSX.Element {
                                 id="campo-idTarefaChamado"
                                 name="idTarefaChamado"
                                 className="form-control"
+                                placeholder='Tarefa'
                                 value={dados.idTarefaChamado}
                                 onChange={(event)=> handleInputChange(event)}
                                 />
                               </div>
-                              <div className="col buscar-tarefas-modal">
+                              <div className="col-3 buscar-tarefas-modal">
                                 <button 
-                                className="btn btn-laranja buscar-tarefas-modal"
+                                className="btn btn-tertiary buscar-tarefas-modal"
                                 onClick={()=> listarTarefas(dados.idTarefaChamado as unknown as string)}
                                 ><i className="fa fa-search"/></button>
                               </div>
                             </div>
                         </div>
                         <div className="col">
-                            <label className="label-modal label-modal-titulo">Cliente</label>
                             <input
                             type="text"
                             id="campo-clienteTarefa"
                             name="clienteTarefa"
+                            placeholder='Cliente'
                             className="form-control campo-modal-apontamento"
                             disabled={!permiteEditar}
                             value={dados.clienteTarefa}
@@ -173,10 +183,10 @@ function ModalApontamento(props : any) : JSX.Element {
                 <div className="form-group">
                     <div className="form-row">
                         <div className="col">
-                            <label className="label-modal label-modal-titulo">Descrição</label>
                             <textarea
                             rows={5}
                             id="campo-descricaoTarefa"
+                            placeholder='Descrição'
                             name="descricaoTarefa"
                             className="form-control campo-modal-apontamento"
                             disabled={!permiteEditar}
@@ -196,7 +206,7 @@ function ModalApontamento(props : any) : JSX.Element {
                   <div>
                     <button
                       type="button"
-                      className="btn-aponta btn-laranja w-100-px"
+                      className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.editarTarefaApontamento(montarObjTarefa())}
                     >
                       Editar
@@ -209,7 +219,7 @@ function ModalApontamento(props : any) : JSX.Element {
                   <div>
                     <button
                       type="button"
-                      className="btn-aponta btn-verde w-100-px"
+                      className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.criarApontamento(montarObjTarefa())}
                     >
                       Criar

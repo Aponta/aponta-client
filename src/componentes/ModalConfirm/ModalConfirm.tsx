@@ -9,7 +9,8 @@ export default function ModalConfirm(props : any) : JSX.Element {
         <ModalControl
           {...props}
           tamanhoModal="sm"
-          estiloModalHeader="backgroundModal tituloModal"
+          esconderFechar
+          estiloModalHeader="backgroundModal tituloModal justify-content-center"
           estiloModalBody="backgroundModal"
           estiloModalFooter="backgroundModal"
           tituloModal={props.tituloModalConfirm}
@@ -17,7 +18,7 @@ export default function ModalConfirm(props : any) : JSX.Element {
             <div className="row centralizar">
               <div className="col">
                 <button
-                  className="btn-aponta btn-vermelho w-100"
+                  className="btn-aponta btn-alternative-secondary w-100"
                   onClick={() => props.onHide()}
                 >
                   Cancelar
@@ -25,7 +26,7 @@ export default function ModalConfirm(props : any) : JSX.Element {
               </div>
               <div className="col">
                 <button
-                  className="btn-aponta btn-verde w-100"
+                  className="btn-aponta btn-tertiary w-100"
                   onClick={() => props.acaoConfirmada(props.onHide())}
                 >
                   Confirmar

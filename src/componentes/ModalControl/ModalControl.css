@@ -5,8 +5,8 @@
 }
 
 .padrao-modal{
-    border-color: #105AAD;
-    background-color: #105AAD;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 .modal-header{
@@ -14,8 +14,9 @@
 }
 
 .modal-content{
-  border: 1px solid #105AAD;
+  border: 1px solid var(--primary-color);
   border-radius: 0 !important ;
+  background-color: var(--primary-color);
 }
 
 .modal-footer{

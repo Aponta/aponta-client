@@ -3,7 +3,7 @@
 }
 
 .backgroundModal {
-  background-color: #105AAD;
+  background-color: var(--primary-color);
 }
 
 .tituloModal {

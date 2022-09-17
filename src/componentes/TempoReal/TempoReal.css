@@ -57,6 +57,10 @@
     padding: 10px;
 }
 
+#titulo-tarefa{
+    font-weight: bolder;
+}
+
 #titulo-tarefa-info-tempo-real{
     font-size: 20px;
     font-weight: bold;
@@ -67,7 +71,7 @@
 }
 
 .texto-info-tempo-real{
-    color:#105AAD;
+    color:var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +83,7 @@
     grid-area: tempo-real-timer-cronometro;
     height: 100%;
     padding: 10px;
-    color:#105AAD;
+    color:var(--primary-color);
 }
 
 #tempo-real-timer-cronometro div {
@@ -104,7 +108,7 @@
 }
 
 .icone-cronometro{
-    color: red;
+    color: var(--primary-color);
     margin-right: 5px;
     animation: blink-animation 0.5s steps(5, end) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite; 

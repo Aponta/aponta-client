@@ -41,31 +41,21 @@ function ModalConfirmarApontamento(props : any) : JSX.Element {
         estiloModalHeader="backgroundModal tituloModal"
         estiloModalBody="backgroundModal"
         estiloModalFooter="backgroundModal"
-        tituloModal="Apontamento"
+        tituloModal={"Apontamento (" + dados.idTarefa + ")"}
         conteudoBody={
             <div className="form">
               <div className="form-group">
                   <div className="form-row">
                       <div className="col">
-                          <label className="label-modal">{dados.idTarefa}</label>
-                         </div>
-                      <div className="col">
-                          <label className="label-modal">{dados.clienteTarefa}</label>
-                      </div>
-                  </div>
-              </div>
-              <div className="form-group">
-                  <div className="form-row">
-                      <div className="col">
-                          <label className="label-modal label-modal-titulo">Descrição</label>
-                          <input
-                          type="text"
-                          id="campo-descricaoTarefa"
-                          name="descricaoTarefa"
-                          className="form-control"
-                          value={dados.descricaoTarefa}
-                          onChange={(event)=> handleInputChange(event)}
-                          />
+                          <textarea
+                            rows={5}
+                            id="campo-descricaoTarefa"
+                            placeholder='Descrição'
+                            name="descricaoTarefa"
+                            className="form-control campo-modal-apontamento"
+                            value={dados.descricaoTarefa}
+                            onChange={(event : any)=> handleInputChange(event)}
+                            />
                       </div>
                   </div>
               </div>
@@ -76,7 +66,7 @@ function ModalConfirmarApontamento(props : any) : JSX.Element {
                 <div>
                   <button
                     type="button"
-                    className="btn-aponta btn-verde w-100-px"
+                    className="btn-aponta btn-tertiary w-100-px"
                     onClick={() => props.criarApontamento(montarObj())}
                   >
                     Criar

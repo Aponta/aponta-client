@@ -38,13 +38,13 @@
 .titulo-aponta{
     font-weight: bold;
     font-size: 25px;
-    color: #105AAD;
+    color: var(--primary-color);
 }
 
 #botao-login{
     color: white;
-    background-color: #105AAD;
-    border-color: #105AAD;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     border-radius: 0 !important;
     height: calc(1.5em + .75rem + 10px) !important;
 }
