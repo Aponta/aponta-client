@@ -1,4 +1,4 @@
-export const linkBackEnd = process.env.REACT_APP_API_URL_DEV;
+export const linkBackEnd = process.env.REACT_APP_ENVIRONMENT ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD;
 
 export const chamarBackEnd = async (
     metodo : string, 
