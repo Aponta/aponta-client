@@ -121,7 +121,7 @@ function TempoReal(props : any) : JSX.Element {
         }, 1000)    
     }
 
-    const criarApontamento = (dadosApontamento : any) => {
+    const criarApontamento = (dadosApontamento : any,  carregandoApontamento: () => void) => {
 
         if(!dadosApontamento.ID_TAREFA_CHAMADO){
             showToast("erro", "Preencha a tarefa");
@@ -143,11 +143,13 @@ function TempoReal(props : any) : JSX.Element {
             return
         }
 
+        carregandoApontamento();
+
         apontamentoUtils.criarApontamento(dadosApontamento).then((response)=>{
             if(response.status == 200){
                 response.json().then((data)=>{
                     if(!data.message){
-                        showToast("sucesso", "Apontamento criado ")
+                        showToast("sucesso", "Apontamento criado")
                         setShowModalApontamento(false);
                         buscaUltimoApontamento();
                     }else{
@@ -155,12 +157,14 @@ function TempoReal(props : any) : JSX.Element {
                     }
                 })
             }
+            carregandoApontamento();
         })
     }
 
     const encerrarApontamento = (idApontamento: number) : void =>{
-    apontamentoUtils.encerrarApontamento(idApontamento).then((response)=>{
-        if(response.status == 200){
+        setCarregando(true);
+        apontamentoUtils.encerrarApontamento(idApontamento).then((response)=>{
+            if(response.status == 200){
                 setLivre(true);
                 buscaUltimoApontamento();
                 showToast("sucesso", "Apontatamento " + dados.TAREFA.ID_TAREFA_CHAMADO + " encerrado")
@@ -179,6 +183,7 @@ function TempoReal(props : any) : JSX.Element {
                     }
                 })
             }
+        setCarregando(false);
         })
     }
     
@@ -247,7 +252,8 @@ function TempoReal(props : any) : JSX.Element {
                                 className="btn-aponta btn-primary w-100"
                                 onClick={()=> setShowModalConfirm(true)}
                                 >
-                                    Encerrar
+                                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                                    {!carregando && "Encerrar"}
                                 </button>
                             </div>
                         </div>
@@ -267,7 +273,7 @@ function TempoReal(props : any) : JSX.Element {
             <ModalApontamento 
                 show={showModalApontamento}
                 onHide={()=>setShowModalApontamento(false)}
-                criarApontamento={(dadosApontamento : any)=> criarApontamento(dadosApontamento)}
+                criarApontamento={(dadosApontamento : any, carregando: () => void)=> criarApontamento(dadosApontamento, carregando)}
             />
         </ div>
     )

@@ -1,11 +1,17 @@
 import React from 'react';
 import "./Carregando.css";
 
-function Carregando () : JSX.Element {
+function Carregando (props: any) : JSX.Element {
 
 return(
     <div className="container">
-    <div className="carregando"></div>
+    <div 
+    style={{
+        "--cor-principal": props.corPrincipal ?? "var(--primary-color)",
+        "--cor-secundaria": props.corSecundaria ?? "var(--tertiary-color)",
+        "--tamanho-carregando": props.tamanho ? `${props.tamanho}px` : "50px" 
+    } as React.CSSProperties}
+    className="carregando"></div>
     </div>
 )
  

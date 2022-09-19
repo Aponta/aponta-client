@@ -1,4 +1,4 @@
-import * as tipos from "../Tipos/Tipos";
+import * as tipos from "../types/Tipos";
 import * as backEndUtils from "./BackEnd";
 
 export const criarApontamento = async (dadosApontamento : any) : Promise<Response> => {

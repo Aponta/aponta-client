@@ -6,8 +6,9 @@ import "./ModalApontamento.css";
 import ModalControl from "../ModalControl/ModalControl";
 import ResultadoBusca from "../ResultadoBusca/ResultadoBusca";
 import { showToast } from '../ToastControl/ToastControl';
-import * as tipos from "../../Tipos/Tipos";
+import * as tipos from "../../types/Tipos";
 import ReactDOM from 'react-dom';
+import Carregando from '../Carregando';
 
 function ModalApontamento(props : any) : JSX.Element {
 
@@ -21,6 +22,8 @@ function ModalApontamento(props : any) : JSX.Element {
     const [showResultado, setShowResultado] = useState(false);
     const [resultadoDisplay, setResultadoDisplay] = useState(<></>)
     const [permiteEditar, setPermiteEditar] = useState(true);
+    const [carregando, setCarregando] = useState(false);
+    const [carregandoCriar, setCarregandoCriar] = useState(false);
 
     useEffect(() => {
       if(props.apontamento){
@@ -93,6 +96,7 @@ function ModalApontamento(props : any) : JSX.Element {
         showToast("erro", "Dados inválidos");
         return;
       }
+        setCarregando(true);
         tarefaUtils.listarTarefas(idTarefaChamado ?? 0).then((response)=>{
           response.json().then((data) =>{
             if(data.message){
@@ -110,6 +114,7 @@ function ModalApontamento(props : any) : JSX.Element {
               montarResultadoBusca(registros);
             }
           })
+          setCarregando(false);
         })
     }
 
@@ -159,7 +164,15 @@ function ModalApontamento(props : any) : JSX.Element {
                                 <button 
                                 className="btn btn-tertiary buscar-tarefas-modal"
                                 onClick={()=> listarTarefas(dados.idTarefaChamado as unknown as string)}
-                                ><i className="fa fa-search"/></button>
+                                >
+                                  {carregando && 
+                                  <Carregando 
+                                  corPrincipal={"white"} 
+                                  corSecundaria={"white"}
+                                  tamanho={30} />}
+                                  {!carregando && <i className="fa fa-search"/>}
+                                  
+                                </button>
                               </div>
                             </div>
                         </div>
@@ -207,9 +220,10 @@ function ModalApontamento(props : any) : JSX.Element {
                     <button
                       type="button"
                       className="btn-aponta btn-tertiary w-100-px"
-                      onClick={() => props.editarTarefaApontamento(montarObjTarefa())}
+                      onClick={() => props.editarTarefaApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                      Editar
+                     {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                      {!carregandoCriar && "Editar"}
                     </button>
                   </div>
                 )
@@ -220,9 +234,10 @@ function ModalApontamento(props : any) : JSX.Element {
                     <button
                       type="button"
                       className="btn-aponta btn-tertiary w-100-px"
-                      onClick={() => props.criarApontamento(montarObjTarefa())}
+                      onClick={() => props.criarApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                      Criar
+                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                      {!carregandoCriar && "Criar"}
                     </button>
                   </div>
                 )

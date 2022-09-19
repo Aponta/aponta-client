@@ -10,7 +10,7 @@ import ModalConfirmarApontamento from "../../ModalConfirmarApontamento/ModalConf
 import ModalApontamento from "../../ModalApontamento/ModalApontamento";
 import { showToast } from "../../ToastControl/ToastControl";
 import Dropdown from "../../Dropdown/Dropdown";
-import { Tarefa } from '../../../Tipos/Tipos';
+import { Tarefa } from '../../../types/Tipos';
 import ModalConfirm from '../../ModalConfirm';
 
 function ItemListaApontamento(props : any) : JSX.Element {

@@ -4,9 +4,11 @@ import "../Login.css";
 import { showToast } from "../../ToastControl/ToastControl";
 import * as backEndUtils from "../../../utils/BackEnd"
 import { useHistory } from 'react-router-dom';
+import Carregando from '../../Carregando';
 
 export default function CadastrarLogin() : JSX.Element {
 
+  const [carregando, setCarregando] = useState(false);
   const [dados, setDados] = useState({
     usuario: "",
     senha: "",
@@ -44,6 +46,8 @@ export default function CadastrarLogin() : JSX.Element {
       senha: senha
     }
 
+    setCarregando(true);
+
     backEndUtils.chamarBackEnd("POST", "/login/cadastrar", requisicao).then((resposta)=>{
       if(resposta.status == 200){
         resposta.json().then((data)=>{
@@ -53,6 +57,7 @@ export default function CadastrarLogin() : JSX.Element {
             historico.push("/login");
             showToast("sucesso" ,"Cadastro efetuado com sucesso");
           }
+          setCarregando(false);
         })
       }
     })
@@ -104,7 +109,8 @@ export default function CadastrarLogin() : JSX.Element {
                   type="button" 
                   className="btn-aponta btn-primary w-100"
                   onClick={()=> cadastrarLogin(dados.usuario, dados.senha, dados.repetirSenha)}>
-                    Cadastrar
+                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                    {!carregando && "Cadastrar"}
                   </button>
                   <button 
                   type="button" 

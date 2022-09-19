@@ -8,14 +8,17 @@ import * as loginActions from "../../../stores/actions/LoginAction";
 import * as backEndUtils from "../../../utils/BackEnd"
 import { showToast } from "../../ToastControl/ToastControl";
 import { Link, useHistory } from "react-router-dom";
+import Carregando from '../../Carregando';
 
 function Logar() : JSX.Element {
 
-  const historico = useHistory();
+  const [carregando, setCarregando] = useState(false);
   const [dados, setDados] = useState({
     usuario: "",
     senha: ""
   })
+
+  const historico = useHistory();
 
   useEffect(() => {
     if(localStorage.getItem("tokenAutenticacao")){
@@ -37,6 +40,8 @@ function Logar() : JSX.Element {
       senha: senha
     }
 
+    setCarregando(true);
+
     backEndUtils.chamarBackEnd("POST", "/login/logar", requisicao).then((resposta)=>{
       if(resposta.status == 200){
         resposta.json().then((data)=>{
@@ -46,8 +51,9 @@ function Logar() : JSX.Element {
             localStorage.tokenAutenticacao = btoa(data.token);
             localStorage.usuarioLogado = btoa(data.usuario.ID_USUARIO);
             showToast("sucesso", "Login efetuado com sucesso");
-            historico.push("/home")
+            historico.push("/home");
           }
+          setCarregando(false);
         })
       }
     })
@@ -68,7 +74,7 @@ function Logar() : JSX.Element {
                   <input 
                   type="text" 
                   name="usuario"
-                  placeholder="Usuário" 
+                  placeholder="Email" 
                   className="form-control text-center" 
                   onChange={(event) => handleInputChange(event)} />
                 </div>
@@ -89,7 +95,8 @@ function Logar() : JSX.Element {
                 type="button" 
                 className="btn btn-aponta btn-primary w-100"
                 onClick={()=>logar(dados.usuario, dados.senha)}>
-                    Login
+                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                    {!carregando && "Entrar"}
                   </button>
                 </div>
               </div>
