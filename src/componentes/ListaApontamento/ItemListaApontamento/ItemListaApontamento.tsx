@@ -99,14 +99,22 @@ function ItemListaApontamento(props : any) : JSX.Element {
     }
 
     const excluirApontamento = (idApontamento: number) => {
-        apontamentoUtils.excluirApontamento(idApontamento).then((data) => {
-            if(data.success){
-                props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
-                showToast('sucesso', data.message);
-            }
-            else
-                showToast('erro', data.message);
-        })
+        return (dispatch : any) => {
+      
+            dispatch({
+              type: "CARREGANDO_DADOS",
+              carregando: true
+            });
+            
+            apontamentoUtils.excluirApontamento(idApontamento).then((data) => {
+                if(data.success){
+                    props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
+                    showToast('sucesso', data.message);
+                }
+                else
+                    showToast('erro', data.message);
+            })
+        }
     }
 
     const montarObj = () =>{
