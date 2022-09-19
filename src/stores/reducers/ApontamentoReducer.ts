@@ -3,6 +3,7 @@ const ESTADO_INICIAL = {
     quantidadePagina: 5,
     paginaAtual: 0,
     apontamentoPaginado: [],
+    carregando: false
   };
   
   export default function ApontamentoReducer(state = ESTADO_INICIAL, action: any) : any {
@@ -22,6 +23,12 @@ const ESTADO_INICIAL = {
             ...state,
             apontamentoPaginado: action.apontamentoPaginado,
           };
+        case "CARREGANDO_DADOS":
+        return {
+          ...state,
+          carregando: action.carregando,
+        }
+        
           default:
           return {
               ...state

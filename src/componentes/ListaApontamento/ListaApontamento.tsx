@@ -16,15 +16,15 @@ function ListaApontamento(props : any) : JSX.Element{
     const [itemApontamentoDisplay, seItemApontamentoDisplay] = useState([]);
  
     useEffect(() => {
-        window.setTimeout(() => props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual), 500)
+        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
     }, [])
 
     useEffect(() => {
-        window.setTimeout(() => props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual), 500)
+        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
     }, [props.paginaAtual])
 
     useEffect(() => {
-        window.setTimeout(() => props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual), 500)
+        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
     }, [props.apontamentoAtual])
 
     useEffect(() => {
@@ -32,6 +32,10 @@ function ListaApontamento(props : any) : JSX.Element{
         montarItensApontamento(props.apontamentoPaginado.listaApontamento);
         setCarregando(false);
     }, [props.apontamentoPaginado])
+
+    useEffect(() => {
+        setCarregando(props.carregando)
+    }, [props.carregando])
 
     const montarPaginacao = (totalRegistros : number) => {
         
@@ -88,6 +92,7 @@ const mapStateToProps = (state : any) => ({
     apontamentoPaginado: state.ApontamentoReducer.apontamentoPaginado,
     quantidadePagina: state.ApontamentoReducer.quantidadePagina,
     paginaAtual: state.ApontamentoReducer.paginaAtual,
+    carregando: state.ApontamentoReducer.carregando
 });
 
 const mapDispatchToProps = (dispatch : any) => ({

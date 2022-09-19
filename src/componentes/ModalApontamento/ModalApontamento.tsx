@@ -222,7 +222,7 @@ function ModalApontamento(props : any) : JSX.Element {
                       className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.editarTarefaApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                     {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                     {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={30} />}
                       {!carregandoCriar && "Editar"}
                     </button>
                   </div>
@@ -236,7 +236,7 @@ function ModalApontamento(props : any) : JSX.Element {
                       className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.criarApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={40}/>}
+                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={30}/>}
                       {!carregandoCriar && "Criar"}
                     </button>
                   </div>

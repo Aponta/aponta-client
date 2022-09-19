@@ -193,6 +193,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
 const mapStateToProps = (state : any) => ({
     quantidadePagina: state.ApontamentoReducer.quantidadePagina,
     paginaAtual: state.ApontamentoReducer.paginaAtual,
+    carregando: state.ApontamentoReducer.carregando
 });
 
 const mapDispatchToProps = (dispatch : any) => ({

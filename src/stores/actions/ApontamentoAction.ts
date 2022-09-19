@@ -19,18 +19,29 @@ export function setApontamentoAtual(apontamentoAtual : any) {
 
     const usuarioLogado = localStorage.getItem("usuarioLogado")
 
-    const requisicao = {
+    return (dispatch : any) => {
+      
+      dispatch({
+        type: "CARREGANDO_DADOS",
+        carregando: true
+      });
+    
+      const requisicao = {
         id : parseInt(atob(usuarioLogado || "")),
         quantidadePagina : quantidadePagina,
         paginaAtual: paginaAtual
-    }
-    return (dispatch : any) => {
+      }
+
       backEndUtils.chamarBackEnd("POST", "/apontamento/paginado", requisicao).then((response) =>{
           if(response.status == 200){
               response.json().then((data)=>{
                 dispatch({
                   type: "GET_APONTAMENTO_PAGINADO",
                   apontamentoPaginado: data,
+                });
+                dispatch({
+                  type: "CARREGANDO_DADOS",
+                  carregando: false
                 });
               })
           }
