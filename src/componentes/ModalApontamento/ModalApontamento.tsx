@@ -236,7 +236,7 @@ function ModalApontamento(props : any) : JSX.Element {
                       className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.criarApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={40}/>}
                       {!carregandoCriar && "Criar"}
                     </button>
                   </div>

@@ -12,12 +12,14 @@ import { showToast } from "../../ToastControl/ToastControl";
 import Dropdown from "../../Dropdown/Dropdown";
 import { Tarefa } from '../../../types/Tipos';
 import ModalConfirm from '../../ModalConfirm';
+import Carregando from '../../Carregando';
 
 function ItemListaApontamento(props : any) : JSX.Element {
 
     const [showModalConfirmarApontamento, setShowModalConfirmarApontamento] = useState(false)
     const [showModalApontamento, setShowModalApontamento] = useState(false)
     const [showModalConfirmarExclusão, setShowModalConfirmarExclusão] = useState(false)
+    const [carregandoExcluir, setCarregandoExcluir] = useState(false)
     const [dados, setDados] = useState({
         ID: 0,
         DATA_HORA_INICIAL: "",
@@ -48,7 +50,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
         })
     }, [props.DATA_HORA_FINAL, props.DATA_HORA_INICIAL, props.DESCRICAO, props.ID, props.TAREFA, props.USUARIO])
 
-    const criarApontamento = (descricao: string) => {
+    const criarApontamento = (descricao: string, carregandoApontamento: () => void) => {
         
         const dadosApontamento = {
             ID_TAREFA: dados.ID,
@@ -57,6 +59,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
             DESCRICAO: descricao
         }
 
+        carregandoApontamento();
         apontamentoUtils.criarApontamento(dadosApontamento).then((response)=>{
             if(response.status == 200){
                 response.json().then((data)=>{
@@ -79,16 +82,19 @@ function ItemListaApontamento(props : any) : JSX.Element {
                     }
                 })
             }
+            carregandoApontamento();
         })
     }
 
-    const editarTarefaApontamento = (tarefa : Tarefa) => {
+    const editarTarefaApontamento = (tarefa : Tarefa, carregandoApontamento: () => void) => {
+        carregandoApontamento();
         apontamentoUtils.editarTarefaApontamento(dados.ID, tarefa).then((response)=>{
             if(response.ok){
                 showToast("sucesso", "Apontamento editado com sucesso");
             }else{
                 showToast("erro", "Erro ao editar apontamento");
             }
+            carregandoApontamento();
         })
     }
 
@@ -151,7 +157,8 @@ function ItemListaApontamento(props : any) : JSX.Element {
                         className="btn-aponta btn-secondary w-100"
                         onClick={() => setShowModalConfirmarExclusão(true)}
                     >
-                        Exluir
+                        {carregandoExcluir && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={40} />}
+                        {!carregandoExcluir && "Excluir"}
                     </button>       
                 </>
             </Dropdown>
@@ -162,13 +169,13 @@ function ItemListaApontamento(props : any) : JSX.Element {
             apontamento={dados}
             permiteEditar={false}
             onHide={() => setShowModalApontamento(false)}
-            editarTarefaApontamento={(tarefa : Tarefa)=>editarTarefaApontamento(tarefa)}
+            editarTarefaApontamento={(tarefa : Tarefa, carregandoApontamento: () => void)=>editarTarefaApontamento(tarefa, carregandoApontamento)}
             />
             <ModalConfirmarApontamento 
             show={showModalConfirmarApontamento}
             onHide={() => setShowModalConfirmarApontamento(false)}
             apontamento={montarObj()}
-            criarApontamento={(descricao : string) => criarApontamento(descricao)}
+            criarApontamento={(descricao : string, carregandoApontamento: () => void) => criarApontamento(descricao, carregandoApontamento)}
             tituloModalConfirm={
               "Deseja confirmar o apontamento ?"
               }

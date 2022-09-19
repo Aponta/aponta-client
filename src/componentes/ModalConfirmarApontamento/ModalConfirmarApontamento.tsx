@@ -4,9 +4,11 @@
 import React, { useState, useEffect } from 'react'
 import "./ModalConfirmarApontamento.css"
 import ModalControl from "../ModalControl/ModalControl";
+import Carregando from '../Carregando';
 
 function ModalConfirmarApontamento(props : any) : JSX.Element {
 
+    const [carregandoCriar, setCarregandoCriar] = useState(false);
     const [dados, setDados] = useState({
         idTarefa: 0,
         clienteTarefa: "",
@@ -67,9 +69,10 @@ function ModalConfirmarApontamento(props : any) : JSX.Element {
                   <button
                     type="button"
                     className="btn-aponta btn-tertiary w-100-px"
-                    onClick={() => props.criarApontamento(montarObj())}
+                    onClick={() => props.criarApontamento(montarObj(), () => setCarregandoCriar(prevState => !prevState))}
                   >
-                    Criar
+                    {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={40} />}
+                    {!carregandoCriar && "Criar"}
                   </button>
                 </div>
               </>

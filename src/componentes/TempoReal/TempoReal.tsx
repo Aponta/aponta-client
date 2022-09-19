@@ -273,7 +273,7 @@ function TempoReal(props : any) : JSX.Element {
             <ModalApontamento 
                 show={showModalApontamento}
                 onHide={()=>setShowModalApontamento(false)}
-                criarApontamento={(dadosApontamento : any, carregando: () => void)=> criarApontamento(dadosApontamento, carregando)}
+                criarApontamento={(dadosApontamento : any, carregandoApontamento: () => void)=> criarApontamento(dadosApontamento, carregandoApontamento)}
             />
         </ div>
     )
