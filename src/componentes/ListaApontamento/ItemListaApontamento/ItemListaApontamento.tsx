@@ -99,22 +99,14 @@ function ItemListaApontamento(props : any) : JSX.Element {
     }
 
     const excluirApontamento = (idApontamento: number) => {
-        return (dispatch : any) => {
-      
-            dispatch({
-              type: "CARREGANDO_DADOS",
-              carregando: true
-            });
-            
-            apontamentoUtils.excluirApontamento(idApontamento).then((data) => {
-                if(data.success){
-                    props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
-                    showToast('sucesso', data.message);
-                }
-                else
-                    showToast('erro', data.message);
-            })
-        }
+        apontamentoUtils.excluirApontamento(idApontamento).then((data) => {
+            if(data.success){
+                props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
+                showToast('sucesso', data.message);
+            }
+            else
+                showToast('erro', data.message);
+        })
     }
 
     const montarObj = () =>{
@@ -165,7 +157,7 @@ function ItemListaApontamento(props : any) : JSX.Element {
                         className="btn-aponta btn-secondary w-100"
                         onClick={() => setShowModalConfirmarExclusão(true)}
                     >
-                        {carregandoExcluir && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={40} />}
+                        {carregandoExcluir && <Carregando cor1={"white"} cor2={"white"} tamanho={40} />}
                         {!carregandoExcluir && "Excluir"}
                     </button>       
                 </>

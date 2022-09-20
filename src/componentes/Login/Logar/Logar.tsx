@@ -95,7 +95,7 @@ function Logar() : JSX.Element {
                 type="button" 
                 className="btn btn-aponta btn-primary w-100"
                 onClick={()=>logar(dados.usuario, dados.senha)}>
-                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                    {carregando && <Carregando cor1={"white"} cor2={"white"} />}
                     {!carregando && "Entrar"}
                   </button>
                 </div>

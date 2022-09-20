@@ -5,20 +5,20 @@
 .item-pagina{
     height: 100%;
     width: 50px;
-    border-top: 1px solid var(--primary-color);
-    border-bottom: 1px solid var(--primary-color);
-    border-right: 1px solid var(--primary-color);
+    border-top: 1px solid var(--cor-primaria);
+    border-bottom: 1px solid var(--cor-primaria);
+    border-right: 1px solid var(--cor-primaria);
     cursor: pointer;
 }
 
 .link-item-pagina{
-    color: var(--primary-color);
+    color: var(--cor-primaria);
     font-weight: bold;
     display: block;
 }
 
 .pagina-atual{
-    background-color: var(--primary-color);
+    background-color: var(--cor-primaria);
 }
 
 .pagina-atual > a{
@@ -30,5 +30,5 @@
 }
 
 .item-pagina:first-child{
-    border-left: 1px solid var(--primary-color);
+    border-left: 1px solid var(--cor-primaria);
 }

@@ -252,7 +252,7 @@ function TempoReal(props : any) : JSX.Element {
                                 className="btn-aponta btn-primary w-100"
                                 onClick={()=> setShowModalConfirm(true)}
                                 >
-                                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                                    {carregando && <Carregando cor1={"white"} cor2={"white"} />}
                                     {!carregando && "Encerrar"}
                                 </button>
                             </div>

@@ -6,7 +6,7 @@
     "item-lista-apontamento-acao";
     height: 200px;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--cor-primaria);
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow:  0 0 0.3em black ;
@@ -37,7 +37,7 @@
 }
 
 .item-apontamento-titulo{
-    background-color: var(--tertiary-color);
+    background-color: var(--cor-terciaria);
     padding: 5px;
     height: 35px !important;
     color: white;
@@ -54,7 +54,7 @@
     grid-template-columns: 70% 30%;
     height: 90px;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--cor-primaria);
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow:  0 0 0.3em black ;

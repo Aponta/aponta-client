@@ -39,48 +39,48 @@
 }
 
 .btn-primary{
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
 }
 
 .btn-secondary{
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
 }
 
 .btn-tertiary{
-    background-color: var(--tertiary-color);
-    border-color: var(--tertiary-color);
+    background-color: var(--cor-terciaria);
+    border-color: var(--cor-terciaria);
 }
 
 .btn-alternative-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
 }
 
 .btn-alternative-secondary {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
+    border-color: var(--cor-secundaria);
+    color: var(--cor-secundaria);
 }
 
 .btn-alternative-tertiary {
-    border-color: var(--tertiary-color);
-    color: var(--tertiary-color);
+    border-color: var(--cor-terciaria);
+    color: var(--cor-terciaria);
 }
 
 .btn-alternative-primary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
 }
 
 .btn-alternative-secondary:hover {
-    border-color: var(--secondary-color);
-    color: var(--secondary-color);
+    border-color: var(--cor-secundaria);
+    color: var(--cor-secundaria);
 }
 
 .btn-alternative-tertiary:hover {
-    border-color: var(--tertiary-color);
-    color: var(--tertiary-color);
+    border-color: var(--cor-terciaria);
+    color: var(--cor-terciaria);
 }
 
 .w-100-px{
@@ -119,10 +119,10 @@
 
 input[type="text"], input[type="password"]{
     background-color: white !important;
-    color: var(--primary-color) !important;
+    color: var(--cor-primaria) !important;
 }
 
 textarea{
     background-color: white !important;
-    color: var(--primary-color) !important;
+    color: var(--cor-primaria) !important;
 }

@@ -109,7 +109,7 @@ export default function CadastrarLogin() : JSX.Element {
                   type="button" 
                   className="btn-aponta btn-primary w-100"
                   onClick={()=> cadastrarLogin(dados.usuario, dados.senha, dados.repetirSenha)}>
-                    {carregando && <Carregando corPrincipal={"white"} corSecundaria={"white"} />}
+                    {carregando && <Carregando cor1={"white"} cor2={"white"} />}
                     {!carregando && "Cadastrar"}
                   </button>
                   <button 

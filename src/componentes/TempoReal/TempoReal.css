@@ -71,7 +71,7 @@
 }
 
 .texto-info-tempo-real{
-    color:var(--primary-color);
+    color:var(--cor-primaria);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,7 @@
     grid-area: tempo-real-timer-cronometro;
     height: 100%;
     padding: 10px;
-    color:var(--primary-color);
+    color:var(--cor-primaria);
 }
 
 #tempo-real-timer-cronometro div {
@@ -108,7 +108,7 @@
 }
 
 .icone-cronometro{
-    color: var(--primary-color);
+    color: var(--cor-primaria);
     margin-right: 5px;
     animation: blink-animation 0.5s steps(5, end) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite; 

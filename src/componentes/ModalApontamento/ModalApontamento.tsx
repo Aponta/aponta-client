@@ -147,7 +147,7 @@ function ModalApontamento(props : any) : JSX.Element {
               <div className="form">
                 <div id="topo-modal-apontamento" className="form-group">
                     <div className="form-row">
-                        <div className="col-xl-4 col-6">
+                        <div className="col-4">
                             <div className="row">
                               <div className="col buscar-tarefas-modal">
                                 <input
@@ -167,8 +167,8 @@ function ModalApontamento(props : any) : JSX.Element {
                                 >
                                   {carregando && 
                                   <Carregando 
-                                  corPrincipal={"white"} 
-                                  corSecundaria={"white"}
+                                  cor1={"white"} 
+                                  cor2={"white"}
                                   tamanho={30} />}
                                   {!carregando && <i className="fa fa-search"/>}
                                   
@@ -222,7 +222,7 @@ function ModalApontamento(props : any) : JSX.Element {
                       className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.editarTarefaApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                     {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={30} />}
+                     {carregandoCriar && <Carregando cor1={"white"} cor2={"white"} tamanho={30} />}
                       {!carregandoCriar && "Editar"}
                     </button>
                   </div>
@@ -236,7 +236,7 @@ function ModalApontamento(props : any) : JSX.Element {
                       className="btn-aponta btn-tertiary w-100-px"
                       onClick={() => props.criarApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
-                      {carregandoCriar && <Carregando corPrincipal={"white"} corSecundaria={"white"} tamanho={30}/>}
+                      {carregandoCriar && <Carregando cor1={"white"} cor2={"white"} tamanho={30}/>}
                       {!carregandoCriar && "Criar"}
                     </button>
                   </div>

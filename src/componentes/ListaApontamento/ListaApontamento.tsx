@@ -24,7 +24,7 @@ function ListaApontamento(props : any) : JSX.Element{
     }, [props.paginaAtual])
 
     useEffect(() => {
-        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
+        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual, props)
     }, [props.apontamentoAtual])
 
     useEffect(() => {

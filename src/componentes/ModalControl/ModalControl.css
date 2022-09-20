@@ -5,8 +5,8 @@
 }
 
 .padrao-modal{
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
+    border-color: var(--cor-primaria);
+    background-color: var(--cor-primaria);
 }
 
 .modal-header{
@@ -14,9 +14,9 @@
 }
 
 .modal-content{
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--cor-primaria);
   border-radius: 0 !important ;
-  background-color: var(--primary-color);
+  background-color: var(--cor-primaria);
 }
 
 .modal-footer{

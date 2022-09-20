@@ -1,7 +1,7 @@
 :root{
-  --primary-color: #471F66;
-  --secondary-color: #B24DFF;
-  --tertiary-color: #7C36B3;
+  --cor-primaria: #471F66;
+  --cor-secundaria: #B24DFF;
+  --cor-terciaria: #7C36B3;
 }
 
 body {

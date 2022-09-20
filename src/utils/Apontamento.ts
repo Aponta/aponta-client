@@ -18,6 +18,9 @@ export const criarApontamento = async (dadosApontamento : any) : Promise<Respons
             ID_TAREFA: 0,
             ID_TAREFA_CHAMADO: parseInt(dadosApontamento.ID_TAREFA_CHAMADO),
             CLIENTE_TAREFA: dadosApontamento.CLIENTE_TAREFA,
+            LOGIN: {
+                ID_USUARIO: parseInt(atob(usuarioLogado || ""))
+            }
         }
     }
 

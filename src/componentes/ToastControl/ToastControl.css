@@ -1,16 +1,16 @@
 
 .Toastify__toast--success {
-  background: var(--primary-color) !important;
+  background: var(--cor-primaria) !important;
 }
 .Toastify__toast--warning {
-  background: var(--tertiary-color) !important;
+  background: var(--cor-terciaria) !important;
 }
 .Toastify__toast--error {
   background: white !important;
-  border: var(--primary-color) !important;
-  color: var(--primary-color) !important;
+  border: var(--cor-primaria) !important;
+  color: var(--cor-primaria) !important;
 }
 
 .Toastify__toast--error > .Toastify__progress-bar {
-  background-color: var(--tertiary-color) !important;
+  background-color: var(--cor-terciaria) !important;
 }

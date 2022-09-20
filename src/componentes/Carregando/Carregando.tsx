@@ -7,8 +7,8 @@ return(
     <div className="container">
     <div 
     style={{
-        "--cor-principal": props.corPrincipal ?? "var(--primary-color)",
-        "--cor-secundaria": props.corSecundaria ?? "var(--tertiary-color)",
+        "--cor-1": props.cor1 ?? "var(--cor-primaria)",
+        "--cor-2": props.cor2 ?? "var(--cor-terciaria)",
         "--tamanho-carregando": props.tamanho ? `${props.tamanho}px` : "50px" 
     } as React.CSSProperties}
     className="carregando"></div>
