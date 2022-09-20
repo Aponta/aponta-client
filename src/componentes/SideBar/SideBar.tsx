@@ -12,21 +12,9 @@ function SideBar(props : any) : JSX.Element {
 
       <nav id="main-menu" className="main-menu">
         <ul>
-          <li id="main-menu-close">
-            {/* eslint-disable-next-line */}
-            <a href="#main-menu-toggle" className="menu-close">
-              <span className="fa fa-close close-sidebar" aria-hidden="true"></span>
-            </a>
-          </li>
-          {/* <li>
-            <div className="container-logo">
-              <img src={logo} className="rounded img-logo" />
-            </div>
-          </li> */}
           {props.children}
         </ul>
       </nav>
-      {/* eslint-disable-next-line */}
       <a
         href="#main-menu-toggle"
         className="backdrop"
