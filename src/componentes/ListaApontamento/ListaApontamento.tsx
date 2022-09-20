@@ -17,15 +17,7 @@ function ListaApontamento(props : any) : JSX.Element{
  
     useEffect(() => {
         props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
-    }, [])
-
-    useEffect(() => {
-        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual)
     }, [props.paginaAtual])
-
-    useEffect(() => {
-        props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual, props)
-    }, [props.apontamentoAtual])
 
     useEffect(() => {
         montarPaginacao(props.apontamentoPaginado.total);
@@ -68,12 +60,12 @@ function ListaApontamento(props : any) : JSX.Element{
 
     return (
         <div id="container-lista-apontamento">
-            {carregando && 
+            {props.carregando && 
                 <>
                     <Carregando />
                 </>
             }
-            {!carregando && (
+            {!props.carregando && (
                 <>
                     <div id="itens-apontamento">
                         {itemApontamentoDisplay}

@@ -8,21 +8,6 @@ import ModalConfirm from "../ModalConfirm/ModalConfirm"
 export default function Deslogar() : JSX.Element {
 
     const [showModalConfirm, setShowModalConfirm] = useState(false);
-    const historico = useHistory();
-
-    useEffect(() => {
-        loginUtils.usuarioLogado(true).then((response)=>{
-            if(!response){
-                deslogar();
-            }
-        });
-    }, [])
-
-    const deslogar = () =>{
-        localStorage.removeItem("tokenAutenticacao");
-        localStorage.removeItem("usuarioLogado");
-        historico.push("/login");
-      }
 
     return (
         <>
@@ -37,7 +22,7 @@ export default function Deslogar() : JSX.Element {
         <ModalConfirm 
         show={showModalConfirm}
         onHide={() => setShowModalConfirm(false)}
-        acaoConfirmada={() => deslogar()}
+        acaoConfirmada={() => loginUtils.deslogar()}
         tituloModalConfirm={
           "Deseja deslogar?"
           }

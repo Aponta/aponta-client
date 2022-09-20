@@ -6,7 +6,6 @@ import "./TempoReal.css"
 import { connect } from "react-redux";
 import dayjs from 'dayjs'
 import dayOfYear from 'dayjs/plugin/dayOfYear';
-import * as loginUtils from "../../utils/Login"
 import * as apontamentoUtils from "../../utils/Apontamento";
 import * as apontamentoActions from "../../stores/actions/ApontamentoAction";
 import { showToast } from "../ToastControl/ToastControl"
@@ -77,7 +76,7 @@ function TempoReal(props : any) : JSX.Element {
     }, [props.apontamentoAtual])
 
     useEffect(() => {
-        loginUtils.usuarioLogado(true).then(response => response ? buscaUltimoApontamento() : undefined)
+        buscaUltimoApontamento()
     }, [])
 
     const montarDisplayBase = () =>{
@@ -167,21 +166,10 @@ function TempoReal(props : any) : JSX.Element {
             if(response.status == 200){
                 setLivre(true);
                 buscaUltimoApontamento();
+                props.getApontamentoPaginado(props.quantidadePagina, props.paginaAtual);
                 showToast("sucesso", "Apontatamento " + dados.TAREFA.ID_TAREFA_CHAMADO + " encerrado")
             }else{
-                apontamentoUtils.buscaUltimoApontamento().then((response)=>{
-                    if(response.status == 200){
-                        response.json().then((data)=>{
-                            if(data.apontamento.DATA_HORA_FINAL){
-                                setLivre(true);
-                                buscaUltimoApontamento();
-                                showToast("sucesso", "Apontatamento " + dados.TAREFA.ID_TAREFA_CHAMADO + " encerrado")
-                            }
-                        })
-                    }else{
-                        document.location.reload();
-                    }
-                })
+                showToast("error", "Ocorreu um erro ao encerrar apontamento");
             }
         setCarregando(false);
         })
@@ -252,8 +240,7 @@ function TempoReal(props : any) : JSX.Element {
                                 className="btn-aponta btn-primary w-100"
                                 onClick={()=> setShowModalConfirm(true)}
                                 >
-                                    {carregando && <Carregando cor1={"white"} cor2={"white"} />}
-                                    {!carregando && "Encerrar"}
+                                    Encerrar
                                 </button>
                             </div>
                         </div>
@@ -281,11 +268,15 @@ function TempoReal(props : any) : JSX.Element {
 
 const mapStateToProps = (state : any) => ({
     apontamentoAtual: state.ApontamentoReducer.apontamentoAtual,
+    quantidadePagina: state.ApontamentoReducer.quantidadePagina,
+    paginaAtual: state.ApontamentoReducer.paginaAtual,
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
     setApontamentoAtual : (apontamentoAtual : any) => 
-    dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual))
+    dispatch(apontamentoActions.setApontamentoAtual(apontamentoAtual)),
+    getApontamentoPaginado : (quantidadePagina : number, paginaAtual : number) => 
+    dispatch(apontamentoActions.getApontamentoPaginado(quantidadePagina, paginaAtual)),
 });
 
 export default connect(

@@ -1,3 +1,6 @@
+import { showToast } from "../componentes/ToastControl/ToastControl";
+import * as loginUtils from "./Login";
+
 export const linkBackEnd = process.env.REACT_APP_ENVIRONMENT ? process.env.REACT_APP_API_URL_DEV : process.env.REACT_APP_API_URL_PROD;
 
 export const chamarBackEnd = async (
@@ -19,9 +22,9 @@ export const chamarBackEnd = async (
                 "Authorization": "Bearer " + tokenAutenticacao
                 },
             body: JSON.stringify(corpo),
-            }).then((resposta) =>  {
-            return resposta
-        })
+            })
+            .then(resposta =>  resolverResposta(resposta))
+            .catch(error => resolverResposta(error));
     }else{
         return await fetch(linkBackEnd + caminho, {
             method: metodo,
@@ -29,10 +32,17 @@ export const chamarBackEnd = async (
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + tokenAutenticacao
                 },
-            }).then((resposta) =>  {
-            return resposta
-            }).catch((error)=>{
-                return error
             })
+            .then(resposta => resolverResposta(resposta))
+            .catch(error => resolverResposta(error))
         }
   };
+
+  const resolverResposta = (resposta: Response) : Response => {
+    if(resposta.status == 401){
+        loginUtils.deslogar();
+        showToast("sucesso", "Sua sessão expirou");
+    }
+
+    return resposta
+  }
