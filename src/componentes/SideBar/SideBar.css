@@ -68,7 +68,7 @@ ul {
   box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   min-height: 100%;
   width: 250px;
-  background: var(--cor-primaria)
+  background: var(--cor-secundaria)
 }
 
 .main-menu a {
