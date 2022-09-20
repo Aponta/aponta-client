@@ -68,7 +68,7 @@ ul {
   box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   min-height: 100%;
   width: 250px;
-  background-color: transparent;
+  background: linear-gradient(0deg, rgba(58,0,102,1) 50%, rgba(58,0,102,0.7206232834930848) 100%);
 }
 
 .main-menu a {
@@ -171,17 +171,15 @@ a.dropdown-item {
 
   .main-menu ul {
     padding: 0;
+    width: 100%;
+    max-width: 100%;
+    background: transparent;
   }
 
   .main-menu {
     position: relative;
     left: 0px;
     overflow-y: auto;
-  }
-
-  .main-menu ul {
-    width: 100%;
-    max-width: 100%;
   }
 
   .inSideBar {
