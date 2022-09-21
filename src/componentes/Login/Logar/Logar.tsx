@@ -93,7 +93,7 @@ function Logar() : JSX.Element {
                 <div className="col">
                 <button 
                 type="button" 
-                className="btn btn-aponta btn-primary w-100"
+                className="btn btn-aponta btn-primario w-100"
                 onClick={()=>logar(dados.usuario, dados.senha)}>
                     {carregando && <Carregando cor1={"white"} cor2={"white"} />}
                     {!carregando && "Entrar"}

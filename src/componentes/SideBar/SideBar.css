@@ -72,12 +72,13 @@ ul {
 }
 
 .main-menu a {
+
   display: block;
   padding: 0 15px;
-  line-height: 1em;
+  margin: 30px 0;
+  line-height: 2em;
   font-size: 1em;
   color: #fff;
-  text-decoration: none;
 }
 
 .main-menu .menu-close {

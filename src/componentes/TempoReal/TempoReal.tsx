@@ -95,7 +95,7 @@ function TempoReal(props : any) : JSX.Element {
                     <div id="container-tempo-real-info-tarefa-descricao">
                         <button 
                         type="button"
-                        className="btn-aponta btn-primary w-100"
+                        className="btn-aponta btn-primario w-100"
                         onClick={()=> setShowModalApontamento(true)}
                         >
                             Novo apontamento
@@ -237,7 +237,7 @@ function TempoReal(props : any) : JSX.Element {
                             <div id="tempo-real-timer-acoes">
                                 <button 
                                 type="button"
-                                className="btn-aponta btn-primary w-100"
+                                className="btn-aponta btn-primario w-100"
                                 onClick={()=> setShowModalConfirm(true)}
                                 >
                                     Encerrar

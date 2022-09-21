@@ -68,7 +68,7 @@ function ModalConfirmarApontamento(props : any) : JSX.Element {
                 <div>
                   <button
                     type="button"
-                    className="btn-aponta btn-tertiary w-100-px"
+                    className="btn-aponta btn-terciario w-100-px"
                     onClick={() => props.criarApontamento(montarObj(), () => setCarregandoCriar(prevState => !prevState))}
                   >
                     {carregandoCriar && <Carregando cor1={"white"} cor2={"white"} tamanho={30} />}

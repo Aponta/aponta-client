@@ -26,7 +26,7 @@ export default function ModalConfirm(props : any) : JSX.Element {
               </div>
               <div className="col">
                 <button
-                  className="btn-aponta btn-tertiary w-100"
+                  className="btn-aponta btn-terciario w-100"
                   onClick={() => props.acaoConfirmada(props.onHide())}
                 >
                   Confirmar

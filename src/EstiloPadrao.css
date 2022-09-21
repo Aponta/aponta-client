@@ -38,17 +38,17 @@
     box-shadow: 0 0 0.3rem black;
 }
 
-.btn-primary{
+.btn-primario{
     background-color: var(--cor-primaria);
     border-color: var(--cor-primaria);
 }
 
-.btn-secondary{
+.btn-secundario{
     background-color: var(--cor-secundaria);
     border-color: var(--cor-secundaria);
 }
 
-.btn-tertiary{
+.btn-terciario{
     background-color: var(--cor-terciaria);
     border-color: var(--cor-terciaria);
 }

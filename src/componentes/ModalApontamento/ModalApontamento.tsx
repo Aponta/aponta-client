@@ -162,7 +162,7 @@ function ModalApontamento(props : any) : JSX.Element {
                               </div>
                               <div className="col-3 buscar-tarefas-modal">
                                 <button 
-                                className="btn btn-tertiary buscar-tarefas-modal"
+                                className="btn btn-terciario buscar-tarefas-modal"
                                 onClick={()=> listarTarefas(dados.idTarefaChamado as unknown as string)}
                                 >
                                   {carregando && 
@@ -219,7 +219,7 @@ function ModalApontamento(props : any) : JSX.Element {
                   <div>
                     <button
                       type="button"
-                      className="btn-aponta btn-tertiary w-100-px"
+                      className="btn-aponta btn-terciario w-100-px"
                       onClick={() => props.editarTarefaApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
                      {carregandoCriar && <Carregando cor1={"white"} cor2={"white"} tamanho={30} />}
@@ -233,7 +233,7 @@ function ModalApontamento(props : any) : JSX.Element {
                   <div>
                     <button
                       type="button"
-                      className="btn-aponta btn-tertiary w-100-px"
+                      className="btn-aponta btn-terciario w-100-px"
                       onClick={() => props.criarApontamento(montarObjTarefa(), () => setCarregandoCriar(prevState => !prevState))}
                     >
                       {carregandoCriar && <Carregando cor1={"white"} cor2={"white"} tamanho={30}/>}

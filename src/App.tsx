@@ -11,6 +11,7 @@ import TempoReal from "./componentes/TempoReal/TempoReal";
 import Deslogar from "./componentes/Deslogar/Deslogar"
 import ListaApontamento from "./componentes/ListaApontamento/ListaApontamento";
 import Rota from "./componentes/Rotas/Rota"
+import TotaisApontamentos from './componentes/TotaisApontamentos/TotaisApontamentos';
 
 function App () : JSX.Element {
 
@@ -41,9 +42,25 @@ function App () : JSX.Element {
                   caminho="/home" 
                   exigeAutenticacao={true}
                   componente={()=> 
+                    <>
                       <MenuOption>
                         <Deslogar />
                       </MenuOption>
+                      <MenuOption>
+                        <a 
+                        href='#'
+                        onClick={()=> historico.push("/home")}>
+                            Início
+                        </a>
+                      </MenuOption>
+                      <MenuOption>
+                        <a 
+                        href='#'
+                        onClick={()=> historico.push("home/horas-apontadas")}>
+                          Horas apontadas
+                        </a>
+                      </MenuOption>
+                    </>
                     }
                   />
                 </>
@@ -77,6 +94,12 @@ function App () : JSX.Element {
               caminho="/home" 
               exigeAutenticacao={true}
               componente={()=><ListaApontamento />}
+              />
+              <Rota 
+              exact
+              caminho="/home/horas-apontadas" 
+              exigeAutenticacao={true}
+              componente={()=><TotaisApontamentos />}
               />
           </div>
           <div id="espaco-cen-rodape"></div>

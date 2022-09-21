@@ -1,6 +1,6 @@
 #container-lista-apontamento{
     display: grid;
-    height: 390px;
+    height: 450px;
     grid-template-areas: 
     "itens-apontamento"
     "paginacao-apontamento";

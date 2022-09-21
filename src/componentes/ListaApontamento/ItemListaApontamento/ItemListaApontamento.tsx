@@ -140,21 +140,21 @@ function ItemListaApontamento(props : any) : JSX.Element {
                 <>
                     <button 
                         type="button"
-                        className="btn-aponta btn-secondary w-100"
+                        className="btn-aponta btn-secundario w-100"
                         onClick={() => setShowModalConfirmarApontamento(true)}
                     >
                         Apontar
                     </button>
                     <button 
                         type="button"
-                        className="btn-aponta btn-tertiary w-100"
+                        className="btn-aponta btn-terciario w-100"
                         onClick={() => setShowModalApontamento(true)}
                     >
                         Editar
                     </button>
                     <button 
                         type="button"
-                        className="btn-aponta btn-secondary w-100"
+                        className="btn-aponta btn-secundario w-100"
                         onClick={() => setShowModalConfirmarExclusão(true)}
                     >
                         {carregandoExcluir && <Carregando cor1={"white"} cor2={"white"} tamanho={40} />}
