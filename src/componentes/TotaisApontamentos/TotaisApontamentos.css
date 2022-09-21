@@ -1,0 +1,59 @@
+#container-totais-apontamentos{
+    display: grid;
+    height: 450px;
+    grid-template-areas: 
+    "busca-totais-apontamentos"
+    "itens-totais-apontamentos"
+    "paginacao-totais-apontamentos";
+    grid-template-rows: 70px 90% auto;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 15px 6px rgba(0,0,0,0.3);
+}
+
+#busca-totais-apontamentos{
+  grid-area: busca-totais-apontamentos;
+}
+
+#itens-totais-apontamentos{
+    max-height: 100%;
+    grid-area: itens-totais-apontamentos;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#paginacao-totais-apontamentos{
+    display: flex;
+    grid-area: paginacao-totais-apontamentos;
+    padding: 2px 0px;
+    justify-content: center;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--cor-primaria);
+    border: 1px white solid;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-button{
+      background-color: white;
+  }
+  
+
+@media (min-width: 1200px){
+    #container-totais-apontamentos{
+      height: auto;
+    }
+  }

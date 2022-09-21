@@ -1,0 +1,40 @@
+.container-item-lista-tempo-total-tarefa{
+    background-color: var(--cor-primaria);
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow:  0 0 0.3em black ;
+    padding: 10px;
+    text-align: left;
+}
+
+.item-lista-tempo-total-tarefa-titulo {
+    background-color: var(--cor-terciaria);
+    padding: 5px;
+    font-size: 1.5em;
+    height: 40px !important;
+    color: white;
+    font-weight: bold;
+    display: flex;
+}
+
+.item-lista-tempo-total-tarefa-titulo div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1
+}
+
+.item-lista-tempo-total-tarefa-titulo div:nth-child(2){
+    display: flex;
+    justify-content: end;
+}
+
+.item-lista-tempo-total-tarefa-titulo div:nth-child(2) div {
+    width: 1px;
+    max-width: 110px;
+}
+.item-lista-tempo-total-tarefa-titulo div i {
+    margin-bottom: 4px;
+}
