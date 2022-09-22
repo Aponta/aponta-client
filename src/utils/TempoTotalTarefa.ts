@@ -15,12 +15,12 @@ export const listarTempoTotalTarefaPorUsuario = (quantidadePagina: number, pagin
     })
 }
 
-export const listarTempoTotalTarefaPorTarefa = (idTarefa: number, quantidadePagina: number, paginaAtual: number) => {
+export const listarTempoTotalTarefaPorTermo = (termoFiltro: string, quantidadePagina: number, paginaAtual: number) => {
 
-    const caminhoRequisicao = "/tempototaltarefa/usuario" 
+    const caminhoRequisicao = "/tempototaltarefa/termo" 
 
     const requisicao = {
-        idTarefa,
+        termoFiltro,
         quantidadePagina,
         paginaAtual
     }

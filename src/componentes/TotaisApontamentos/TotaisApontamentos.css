@@ -17,6 +17,8 @@
 
 #busca-totais-apontamentos{
   grid-area: busca-totais-apontamentos;
+  display: flex;
+  justify-content: center;
 }
 
 #itens-totais-apontamentos{
@@ -33,27 +35,16 @@
     justify-content: center;
 }
 
-::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: white;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--cor-primaria);
-    border: 1px white solid;
-    border-radius: 5px;
-  }
-
-  ::-webkit-scrollbar-button{
-      background-color: white;
-  }
-  
+#busca-totais-apontamentos input {
+  text-align: center;
+}
 
 @media (min-width: 1200px){
     #container-totais-apontamentos{
       height: auto;
+    }
+
+    #busca-totais-apontamentos input {
+      width: 40%;
     }
   }

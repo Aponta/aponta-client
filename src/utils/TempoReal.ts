@@ -1,37 +1,15 @@
-/* eslint-disable eqeqeq */
-import dayjs from "dayjs";
+export const formatarHora = (tempoTotal: number) : string => {
 
-export let formatadoDiplay = "00:00";
-let idTempoReal = 0;
-let horas = 0;
-let minutos = 0;
+    let seconds = Math.floor(tempoTotal / 1000);
+    let minutes = Math.floor(seconds / 60) || 1;
+    let hours = Math.floor(minutes / 60);
 
-export const IniciarTempoReal = () =>{
-    clearInterval(idTempoReal);
-    formatadoDiplay = (horas < 10 ? "0" + horas : horas) + ":" + (minutos < 10 ? "0" + minutos : minutos)
-    idTempoReal = setInterval(()=>{
-    minutos += 1;
-        if(minutos == 60){
-            minutos = 0;
-            horas += 1;
-        }
-        formatadoDiplay =(horas < 10 ? "0" + horas : horas) + ":" + (minutos < 10 ? "0" + minutos : minutos)
-    },1000) as any
+    seconds = seconds > minutes * 60 ? seconds - (minutes * 60)  : seconds
+    minutes = minutes > hours * 60 ? minutes - (hours * 60)  : minutes
 
+    return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`
 }
 
-export const AtualizarTimer = (dataHoraInicial: Date) : any => {
-    
-    const horaInicial = dayjs(dataHoraInicial).hour();
-    const minutosInicial = dayjs(dataHoraInicial).minute();
-
-    const dataHoraAtual = dayjs();
-    horas = dataHoraAtual.hour() - horaInicial
-    if(minutosInicial>dataHoraAtual.minute()){
-        minutos = ((dataHoraAtual.minute() * -1) + 60) - minutosInicial
-    }else{
-        minutos = dataHoraAtual.minute() - minutosInicial
-    }
-
-    IniciarTempoReal()
+const padTo2Digits = (numero: number): string =>  {
+    return numero.toString().padStart(2, '0');
 }
