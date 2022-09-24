@@ -4,15 +4,15 @@ import "./Carregando.css";
 function Carregando (props: any) : JSX.Element {
 
 return(
-    <div className="container">
-    <div 
-    style={{
-        "--cor-1": props.cor1 ?? "var(--cor-primaria)",
-        "--cor-2": props.cor2 ?? "var(--cor-terciaria)",
-        "--tamanho-carregando": props.tamanho ? `${props.tamanho}px` : "50px" 
-    } as React.CSSProperties}
-    className="carregando"></div>
-    </div>
+    <section className="container">
+        <span 
+        style={{
+            "--cor-1": props.cor1 ?? "var(--cor-primaria)",
+            "--cor-2": props.cor2 ?? "var(--cor-terciaria)",
+            "--tamanho-carregando": props.tamanho ? `${props.tamanho}px` : "50px" 
+        } as React.CSSProperties}
+        className="carregando"></span>
+    </section>
 )
  
 }

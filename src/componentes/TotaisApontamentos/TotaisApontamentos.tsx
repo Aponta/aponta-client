@@ -33,6 +33,7 @@ function TotaisApontamentos() {
     }, [paginaAtual])
 
     const listarTempoTotalTarefa = () => {
+        setCarregando(true)
         utilsTotalTempoTarefa.listarTempoTotalTarefa(quantidadePagina, paginaAtual)
             .then(response => {
                 if(response.status == 200){
@@ -45,6 +46,7 @@ function TotaisApontamentos() {
     }
 
     const listarTempoTotalTarefaPorTermo = (pagina: number | undefined) => {
+        setCarregando(true)
         utilsTotalTempoTarefa.listarTempoTotalTarefaPorTermo(termoFiltro, quantidadePagina, pagina ?? paginaAtual)
             .then(response => {
                 if(response.status == 200){

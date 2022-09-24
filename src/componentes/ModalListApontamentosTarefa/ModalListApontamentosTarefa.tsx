@@ -21,11 +21,11 @@ function ModalListApontamentosTarefa(props : any) : JSX.Element {
 
     useEffect(() => {
         if(props.show && props.idTarefa){
+          setCarregando(true)
           buscarApontamentosPorTarefa(props.idTarefa, quantidadePagina, paginaAtual).then((data) => {
                 if(data){
                   setTotalRegistros(data.total);
                   setListaApontamento(data.listaApontamento);
-                  setCarregando(false)
                 }
           })
         }
@@ -34,7 +34,7 @@ function ModalListApontamentosTarefa(props : any) : JSX.Element {
     useEffect(() => {
       montarPaginacao(totalRegistros);
       montarItensApontamento(listaApontamento)
-
+      setCarregando(false)
     }, [totalRegistros, listaApontamento])
 
     const montarItensApontamento = (listaApontamento : any) =>{
@@ -89,7 +89,7 @@ function ModalListApontamentosTarefa(props : any) : JSX.Element {
         conteudoBody={
           <div id='container-modal-list-apontamentos-tarefa'>
             <div className='itens-apontamento'>
-              {carregando && <Carregando />}
+              {carregando && <Carregando cor1={"white"} cor2={"white"} />}
               {!carregando && apontamentosDisplay}
             </div>
             <div className='paginacao-apontamento'>

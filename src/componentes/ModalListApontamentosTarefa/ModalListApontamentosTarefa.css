@@ -20,7 +20,7 @@
 .itens-apontamento div {
     background-color: var(--cor-terciaria);
     width: 100%;
-    height: auto;
+    height: 100%;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
