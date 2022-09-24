@@ -1,6 +1,6 @@
 import * as backEndUtils from "./BackEnd";
 
-export const listarTempoTotalTarefaPorUsuario = (quantidadePagina: number, paginaAtual: number) => {
+export const listarTempoTotalTarefa = (quantidadePagina: number, paginaAtual: number) => {
     const usuarioLogado = localStorage.getItem("usuarioLogado")
     const caminhoRequisicao = "/tempototaltarefa/usuario" 
 
@@ -17,9 +17,11 @@ export const listarTempoTotalTarefaPorUsuario = (quantidadePagina: number, pagin
 
 export const listarTempoTotalTarefaPorTermo = (termoFiltro: string, quantidadePagina: number, paginaAtual: number) => {
 
+    const usuarioLogado = localStorage.getItem("usuarioLogado")
     const caminhoRequisicao = "/tempototaltarefa/termo" 
 
     const requisicao = {
+        idUsuario: atob(usuarioLogado || ""),
         termoFiltro,
         quantidadePagina,
         paginaAtual

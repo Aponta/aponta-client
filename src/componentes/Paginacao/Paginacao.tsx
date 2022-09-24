@@ -21,7 +21,12 @@ function Paginacao(props : any) : JSX.Element {
     }
 
     return (
-        <div className="container-paginacao">
+        <div className="container-paginacao"
+        style={{
+            "--corPaginacao" : props.cor ?? "var(--cor-primaria)",
+            "--corPaginacaoSelecionado": props.cor ? "var(--cor-primaria)" : "white" 
+        } as React.CSSProperties}
+        >
             <ReactPaginate
             previousLabel={'<'}
             previousClassName={"item-pagina"}

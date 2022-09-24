@@ -70,3 +70,17 @@ export const excluirApontamento = async (idApontamento: number) : Promise<any>  
     return backEndUtils.chamarBackEnd("DELETE", caminhoRequisicao, "")
         .then((response)=> response.json().then((data) => data))
 }
+
+export const buscarApontamentosPorTarefa = async (idTarefa: number, quantidadePagina: number, paginaAtual: number) : Promise<any>  =>{
+
+    const caminhoRequisicao = "/apontamento/tarefa";
+
+    const requisicao = {
+        idTarefa,
+        quantidadePagina,
+        paginaAtual
+    }
+
+    return backEndUtils.chamarBackEnd("POST", caminhoRequisicao, requisicao)
+        .then((response)=> response.json().then((data) => data))
+}

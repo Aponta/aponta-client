@@ -11,23 +11,27 @@
     color: white;
     font-weight: bold;
     display: flex;
+    cursor: pointer;
 }
 
 .container-item-lista-tempo-total-tarefa div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex: 1
 }
 
 .container-item-lista-tempo-total-tarefa div:nth-child(1){
     padding-left: 10px;
     background-color: var(--cor-terciaria);
+    flex: 1.3;
+    padding: 3px;
+    text-align: start;
 }
 
 .container-item-lista-tempo-total-tarefa div:nth-child(2){
     display: flex;
     justify-content: end;
+    flex: 1
 }
 
 .container-item-lista-tempo-total-tarefa div:nth-child(2) div {
@@ -36,4 +40,10 @@
 }
 .container-item-lista-tempo-total-tarefa div i {
     margin-bottom: 4px;
+}
+
+@media (min-width: 1200px) {
+    .container-item-lista-tempo-total-tarefa div:nth-child(1){
+        text-align: center;
+    }   
 }

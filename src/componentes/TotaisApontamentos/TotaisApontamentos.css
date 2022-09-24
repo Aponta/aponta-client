@@ -5,7 +5,7 @@
     "busca-totais-apontamentos"
     "itens-totais-apontamentos"
     "paginacao-totais-apontamentos";
-    grid-template-rows: 70px 90% auto;
+    grid-template-rows: 70px calc(90% - 70px) auto;
     width: 100%;
     background-color: white;
     padding: 10px;
@@ -19,6 +19,7 @@
   grid-area: busca-totais-apontamentos;
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
 #itens-totais-apontamentos{
@@ -35,16 +36,43 @@
     justify-content: center;
 }
 
-#busca-totais-apontamentos input {
+#busca-totais-apontamentos div {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#busca-totais-apontamentos div > button {
+  position: absolute;
+  right: 10px;
+}
+
+#busca-totais-apontamentos div > i {
+  position: absolute;
+  right: 10px;
+}
+
+#busca-totais-apontamentos div button {
+  margin-top: 4px;
+}
+
+#busca-totais-apontamentos div i {
+  opacity: 0.6;
+}
+
+#busca-totais-apontamentos div input {
+  width: 100%;
   text-align: center;
+  padding-right: 30px;
 }
 
 @media (min-width: 1200px){
-    #container-totais-apontamentos{
-      height: auto;
-    }
-
-    #busca-totais-apontamentos input {
-      width: 40%;
-    }
+  #container-totais-apontamentos{
+    height: 600px;
   }
+
+  #busca-totais-apontamentos div {
+    width: 40%;
+  }
+}

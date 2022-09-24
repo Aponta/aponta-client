@@ -1,0 +1,47 @@
+#container-modal-list-apontamentos-tarefa {
+    display: grid;
+    grid-template-areas: 
+    "itens-apontamento"
+    "paginacao-apontamento";
+    grid-template-rows: 90% auto;
+    flex-direction: column;
+    color: white;
+}
+
+.itens-apontamento{
+    grid-area: itens-apontamento;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 320px;
+    max-height: 500px;
+}
+
+.itens-apontamento div {
+    background-color: var(--cor-terciaria);
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.itens-apontamento textarea {
+    width: 100%;
+    text-align: center;
+}
+
+.itens-apontamento div div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginacao-apontamento{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: paginacao-apontamento;
+}

@@ -21,19 +21,19 @@ function TotaisApontamentos() {
     const [itensTotalTempoTarefa, setItensTotalTempoTarefa] = useState([]);
 
     useEffect(() => {
-        listarTempoTotalTarefaPorUsuario()
+        listarTempoTotalTarefa()
     }, [])
 
     useEffect(() => {
         if(termoFiltro){
             listarTempoTotalTarefaPorTermo(undefined)
         }else{
-            listarTempoTotalTarefaPorUsuario()
+            listarTempoTotalTarefa()
         }
     }, [paginaAtual])
 
-    const listarTempoTotalTarefaPorUsuario = () => {
-        utilsTotalTempoTarefa.listarTempoTotalTarefaPorUsuario(quantidadePagina, paginaAtual)
+    const listarTempoTotalTarefa = () => {
+        utilsTotalTempoTarefa.listarTempoTotalTarefa(quantidadePagina, paginaAtual)
             .then(response => {
                 if(response.status == 200){
                     response.json().then(data => {
@@ -94,15 +94,28 @@ function TotaisApontamentos() {
   return (
     <div id="container-totais-apontamentos">
         <div id="busca-totais-apontamentos">
-            <input 
-            type="text"
-            className="form-control"
-            name="pesquisaTarefa"
-            placeholder="Filtre a tarefa ou cliente"
-            value={termoFiltro}
-            onChange={event => setTermoFiltro(event.target.value)}
-            onKeyDown={(event) => event.key == "Enter" ? listarTempoTotalTarefaPorTermo(0) : ""}
-            />
+            <div>
+                <input 
+                type="text"
+                className="form-control"
+                name="pesquisaTarefa"
+                placeholder="Filtre por tarefa ou cliente"
+                value={termoFiltro}
+                onChange={event => setTermoFiltro(event.target.value)}
+                onKeyDown={(event) => event.key == "Enter" ? listarTempoTotalTarefaPorTermo(0) : ""}
+                />
+                {termoFiltro.length > 0 ? (
+                    <button 
+                    type="button" 
+                    className="close" 
+                    aria-label="Close"
+                    onClick={() => {setTermoFiltro("");listarTempoTotalTarefa()}}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                ) : (
+                    <i className="fa fa-search"></i>
+                )}
+            </div>
         </div>
         <div id="itens-totais-apontamentos">
             {carregando && <Carregando />}

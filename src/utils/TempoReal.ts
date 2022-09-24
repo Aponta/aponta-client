@@ -1,7 +1,7 @@
 export const formatarHora = (tempoTotal: number) : string => {
 
     let seconds = Math.floor(tempoTotal / 1000);
-    let minutes = Math.floor(seconds / 60) || 1;
+    let minutes = Math.floor(seconds / 60);
     let hours = Math.floor(minutes / 60);
 
     seconds = seconds > minutes * 60 ? seconds - (minutes * 60)  : seconds
