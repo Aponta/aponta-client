@@ -65,7 +65,7 @@ function TotaisApontamentos() {
     useEffect(() => {
         montarPaginacao(totalRegistros);
         montarItensTempoTotalTarefa(itensTotalTempoTarefa);
-        setCarregando(false);
+        // setCarregando(false);
     }, [itensTotalTempoTarefa])
 
     const montarPaginacao = (totalRegistros : number) => {
